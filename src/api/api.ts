@@ -1,3 +1,5 @@
+import { ShipmentPage } from './types'
+
 export const API_KEY = process.env.REACT_APP_API_KEY || '03b8572954325680265531140190fd2a'
 export const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.themoviedb.org/3'
 export const API_ENDPOINT_IMAGE = 'https://image.tmdb.org/t/p'
@@ -12,4 +14,12 @@ export async function callApi(method: string, url: string, data?: any) {
     body: JSON.stringify(data)
   })
   return res.json()
+}
+
+export async function getShipmentsPage(page: number): ShipmentPage {
+
+}
+
+export async function searchShipments(term: string): ShipmentPage {
+  throw new Error('Функционал находится в разработке.')
 }

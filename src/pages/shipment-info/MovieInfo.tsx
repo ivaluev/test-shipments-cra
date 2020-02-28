@@ -13,7 +13,7 @@ import {
   MovieRoles,
   MovieReview
 } from './MovieInfoHeader'
-import { API_ENDPOINT_IMAGE, API_KEY, API_ENDPOINT, callApi } from '../../utils/api'
+import { API_ENDPOINT_IMAGE, API_KEY, API_ENDPOINT, callApi } from '../../api/api'
 import { MovieStatsInner, MovieStats, StatAttribute, Bullet } from './MovieInfoStats'
 import { MovieDetails, MovieDetailsColumn, MovieDetailsRow, MovieDetailsAttrName } from './MovieInfoDetails'
 import { Loading } from '../../layout/Loading'
