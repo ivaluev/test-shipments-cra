@@ -60,11 +60,11 @@ export default function MovieIndex() {
         {results.map(sh => (
           <tr key={sh.id}>
             <td>{sh.id}</td>
-            <ShipmentIndexDetail>
+            <td>
               <ShipmentName>
                 <Link to={`/shipments/${sh.id}`}>{sh.origin}</Link>
               </ShipmentName>
-            </ShipmentIndexDetail>
+            </td>
             <td>{sh.destination}</td>
             <td>{sh.status || 0}</td>
           </tr>

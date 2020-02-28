@@ -23,7 +23,7 @@ const DataTable: React.FC<DataTableProps> = ({ children, columns, widths }) => (
 
 export default DataTable
 
-const Wrapper = styled.table`
+const Wrapper = styled('table')`
   margin-bottom: 0;
   border-top: 1px solid ${props => props.theme.colors.borders};
   border-bottom: 1px solid ${props => props.theme.colors.borders};
@@ -43,7 +43,7 @@ const Wrapper = styled.table`
       border-top: 1px solid ${props => props.theme.colors.borders};
       height: 45px;
 
-      &:nth-child(even) {
+      &:nth-of-type() {
         background: ${props => props.theme.colors.tableOdd};
       }
 
