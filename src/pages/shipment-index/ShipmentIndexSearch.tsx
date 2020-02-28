@@ -13,13 +13,13 @@ const setSearchStateDebounced = AwesomeDebouncePromise(setSearchState, 1200)
 const colorInactive = desaturate(0.7, brandColors.red)
 const colorActive = brandColors.red
 
-type MovieSearchBoxProps = {
+type ShipmentIndexSearchProps = {
   search: string
   setSearch: (newSearch: string) => void
   resetSearch: () => void
 }
 
-export const MovieSearchBox = ({ search, setSearch, resetSearch }: MovieSearchBoxProps) => {
+export const ShipmentIndexSearch = ({ search, setSearch, resetSearch }: ShipmentIndexSearchProps) => {
   const [searchLocal, setSearchLocal] = useState(search)
   const [searchIsActive, setSearchIsActive] = useState(false)
   const onChange = (value: string) => {

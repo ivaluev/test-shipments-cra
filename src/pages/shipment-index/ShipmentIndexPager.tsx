@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from '../../utils/styled'
 
-type MovieIndexPagerProps = {
+type ShipmentIndexPagerProps = {
   page: number
   pagesTotal: number
   setPage: (page: number) => void
 }
 
-export default function MovieIndexPager({ page, pagesTotal, setPage }: MovieIndexPagerProps) {
+export default function ShipmentIndexPager({ page, pagesTotal, setPage }: ShipmentIndexPagerProps) {
   const hasNext = page < pagesTotal
 
   const handlePageNext = () => {

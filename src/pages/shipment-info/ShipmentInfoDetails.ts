@@ -1,7 +1,7 @@
 import { transparentize } from 'polished'
 import styled from '../../utils/styled'
 
-export const MovieDetailsAttrName = styled('span')`
+export const ShipmentDetailsAttrName = styled('span')`
   color: ${props => transparentize(0.25, props.theme.colors.body)};
   flex-grow: 1;
   font-size: 12px;
@@ -9,7 +9,7 @@ export const MovieDetailsAttrName = styled('span')`
   text-transform: uppercase;
 `
 
-export const MovieDetailsRow = styled('span')`
+export const ShipmentDetailsRow = styled('span')`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -26,14 +26,14 @@ export const MovieDetailsRow = styled('span')`
   }
 `
 
-export const MovieDetailsColumn = styled('div')`
+export const ShipmentDetailsColumn = styled('div')`
   display: flex;
   flex-direction: column;
   flex: 1 1 0px;
   padding: 8px;
 `
 
-export const MovieDetails = styled('div')`
+export const ShipmentDetails = styled('div')`
   display: flex;
   margin-top: 10px;
   margin-left: -8px;

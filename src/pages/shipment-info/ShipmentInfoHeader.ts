@@ -1,14 +1,14 @@
 import { darken } from 'polished'
 import styled from '../../utils/styled'
 
-export const MovieInfobox = styled('div')`
+export const ShipmentInfobox = styled('div')`
   position: relative;
   background: rgba(0, 0, 0, 0.9);
   overflow: hidden;
   border-radius: 8px;
   color: ${props => darken(0.25, props.theme.colors.white)};
 `
-export const MovieInfoboxBlurBackground = styled('img')`
+export const ShipmentInfoboxBlurBackground = styled('img')`
   position: absolute;
   top: -12.5%;
   left: -12.5%;
@@ -21,7 +21,7 @@ export const MovieInfoboxBlurBackground = styled('img')`
   z-index: 1;
 `
 
-export const MovieInfoboxInner = styled('div')`
+export const ShipmentInfoboxInner = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,7 +35,7 @@ export const MovieInfoboxInner = styled('div')`
   }
 `
 
-export const MovieInfoboxImage = styled('img')`
+export const ShipmentInfoboxImage = styled('img')`
   display: block;
   flex-shrink: 0;
   width: 180px;
@@ -49,7 +49,7 @@ export const MovieInfoboxImage = styled('img')`
   border-image: initial;
 `
 
-export const MovieInfoboxHeading = styled('div')`
+export const ShipmentInfoboxHeading = styled('div')`
   flex: 1 1 100%;
   margin: 1.5rem 0 0;
   text-align: center;
@@ -60,13 +60,13 @@ export const MovieInfoboxHeading = styled('div')`
   }
 `
 
-export const MovieName = styled('h1')`
+export const ShipmentName = styled('h1')`
   margin: 0;
   color: ${props => props.theme.colors.white};
   font-weight: 500;
 `
 
-export const MovieRoles = styled('p')`
+export const ShipmentRoles = styled('p')`
   margin: 0.5rem 0 0;
   color: ${props => props.theme.colors.white};
   font-size: 0.8rem;
@@ -78,6 +78,6 @@ export const MovieRoles = styled('p')`
   }
 `
 
-export const MovieReview = styled.p`
+export const ShipmentReview = styled.p`
   font-size: 0.8rem;
 `

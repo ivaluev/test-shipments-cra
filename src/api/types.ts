@@ -8,6 +8,11 @@ export type ShipmentService = {
   type: string
 }
 
+// This type is basically shorthand for `{ [key: string]: any }`. Feel free to replace `any` with
+// the expected return type of your API response.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ApiResponse = Record<string, any>
+
 export type Shipment = {
   id: string
   name: string
@@ -24,14 +29,14 @@ export type Shipment = {
 
 export class DataPage {
   constructor(shipments: Shipment[], page: number, pageSize = 20) {
-    this.items = shipments.slice(pageSize * (page - 1), pageSize)
-    this.pagesTotal = shipments.length
-    this.page = page
+    this.items = shipments.slice(pageSize * (page - 1), pageSize) || []
+    this.pagesTotal = shipments.length || 0
+    this.page = page || 1
   }
 
-  items: Shipment[] | undefined
+  items: Shipment[]
 
-  pagesTotal: number | undefined
+  pagesTotal: number
 
-  page: number | undefined
+  page: number
 }

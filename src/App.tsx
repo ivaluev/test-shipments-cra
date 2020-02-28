@@ -10,7 +10,7 @@ import globals from './styles/globals'
 import Root from './layout/Root'
 import Header from './layout/Header'
 
-import Movies from './pages/Movies'
+import Shipments from './pages/Shipments'
 import About from './pages/About'
 
 export default function App() {
@@ -20,12 +20,12 @@ export default function App() {
         <Global styles={normalize} />
         <Global styles={globals} />
         <Router>
-          <Header title="IMDb movies search" />
+          <Header title="Shipments Client Portal" />
           <Switch>
             <Route path="/" exact>
-              <Redirect to="/movies" />
+              <Redirect to="/shipments" />
             </Route>
-            <Route path="/movies" component={Movies} />
+            <Route path="/shipments" component={Shipments} />
             <Route path="/about" exact component={About} />
             <Route component={() => <div>Not Found</div>} />
           </Switch>

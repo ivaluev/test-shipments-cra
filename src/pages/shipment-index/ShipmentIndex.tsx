@@ -4,12 +4,12 @@ import Page from '../../layout/Page'
 import Container from '../../layout/Container'
 import DataTable from '../../components/DataTable'
 import { Loading } from '../../layout/Loading'
-import { getShipments } from '../../api/api'
-import { MovieIndexItem, ApiResponseSearch } from './types'
-import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName, MovieIconPh } from './ShipmentIndexItem'
-import { MovieSearchBox } from './ShipmentIndexSearch'
-import MovieIndexPager from './ShipmentIndexPager'
+import { getShipmentsById, getShipments } from '../../api/api'
+import { ShipmentLoading, ShipmentIndexDetail, TableWrapper, ShipmentName, ShipmentIconPh } from './ShipmentIndexItem'
+import ShipmentIndexPager from './ShipmentIndexPager'
 import { useQuery } from '../../utils/hooks'
+import { DataPage, Shipment } from '../../api/types'
+import { ShipmentIndexSearch } from './ShipmentIndexSearch'
 
 export default function MovieIndex() {
   // we assume that change in the query re-render our com
@@ -20,56 +20,51 @@ export default function MovieIndex() {
 
   // state
   const [loading, setLoading] = useState(false)
-  const [results, setResults] = useState<MovieIndexItem[]>([])
+  const [results, setResults] = useState<Shipment[]>([])
   const [resultsPages, setResultsPages] = useState(1)
   const [error, setError] = useState<string>('')
 
   // actions
-  const setPageAction = (newPage: number) => history.push(`/movies?search=${search}&page=${newPage}`)
-  const setSearchAction = (newSearch: string) => history.push(`/movies?search=${newSearch}&page=1`)
-  const searchReset = () => history.push('/movies')
+  const redirectTo = (s: string, p: number) => history.push(`/shipments?search=${s}&page=${p}`)
+  const setPageAction = (newPage: number) => redirectTo(search, newPage)
+  const setSearchAction = (newSearch: string) => redirectTo(newSearch, 1)
+  const searchReset = () => history.push('/shipments')
 
   useEffect(() => {
-    if (search) {
-      const searchUrl = getSearchUrl(search, page)
-      const searchFn = async () => {
-        setLoading(true)
-        try {
-          const result: ApiResponseSearch = await callApi('get', searchUrl)
-          setResults(result.results)
-          setResultsPages(result.total_pages)
-        } catch (err) {
-          setError(err.toString())
-        } finally {
-          setLoading(false)
-        }
+    const fetch = search ? getShipmentsById : getShipments
+    const loadFn = async () => {
+      setLoading(true)
+      try {
+        const result: DataPage = await fetch(page, search)
+        setResults(result.items)
+        setResultsPages(result.pagesTotal)
+      } catch (err) {
+        setError(err.toString())
+      } finally {
+        setLoading(false)
       }
-      searchFn()
-    } else {
-      setResults([])
-      setResultsPages(0)
     }
+    loadFn()
   }, [search, page])
 
   function renderData() {
     return (
-      <DataTable columns={['Movie', 'Release Date', 'Popularity']} widths={['auto', '', '']}>
+      <DataTable columns={['Pic', 'Destination', 'Status']} widths={['auto', '', '']}>
         {loading && results.length === 0 && (
-          <MovieLoading>
+          <ShipmentLoading>
             <td colSpan={3}>Loading...</td>
-          </MovieLoading>
+          </ShipmentLoading>
         )}
-        {results.map(movie => (
-          <tr key={movie.id}>
-            <MovieIndexDetail>
-              {movie.poster_path && <MovieIcon src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} alt={movie.title} />}
-              {!movie.poster_path && <MovieIconPh />}
-              <MovieName>
-                <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-              </MovieName>
-            </MovieIndexDetail>
-            <td>{movie.release_date}</td>
-            <td>{movie.popularity || 0}</td>
+        {results.map(sh => (
+          <tr key={sh.id}>
+            <ShipmentIndexDetail>
+              <ShipmentIconPh />
+              <ShipmentName>
+                <Link to={`/shipments/${sh.id}`}>{sh.name}</Link>
+              </ShipmentName>
+            </ShipmentIndexDetail>
+            <td>{sh.destination}</td>
+            <td>{sh.status || 0}</td>
           </tr>
         ))}
       </DataTable>
@@ -81,11 +76,11 @@ export default function MovieIndex() {
       <Container>
         <TableWrapper>
           <Loading loading={loading} />
-          <MovieSearchBox search={search} setSearch={setSearchAction} resetSearch={searchReset} />
+          <ShipmentIndexSearch search={search} setSearch={setSearchAction} resetSearch={searchReset} />
           {renderData()}
           {error && <div>{error}</div>}
         </TableWrapper>
-        <MovieIndexPager page={page} pagesTotal={resultsPages} setPage={setPageAction} />
+        <ShipmentIndexPager page={page} pagesTotal={resultsPages} setPage={setPageAction} />
       </Container>
     </Page>
   )

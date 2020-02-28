@@ -1,6 +1,6 @@
 import styled from '../../utils/styled'
 
-export const MovieStats = styled('div')`
+export const ShipmentStats = styled('div')`
   display: block;
   max-width: 340px;
   margin: 1.5rem 0 0;
@@ -14,7 +14,7 @@ export const MovieStats = styled('div')`
   }
 `
 
-export const MovieStatsInner = styled('div')`
+export const ShipmentStatsInner = styled('div')`
   display: flex;
 `
 
