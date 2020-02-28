@@ -41,6 +41,7 @@ const Wrapper = styled.table`
   tbody {
     tr {
       border-top: 1px solid ${props => props.theme.colors.borders};
+      height: 45px;
 
       &:nth-child(even) {
         background: ${props => props.theme.colors.tableOdd};

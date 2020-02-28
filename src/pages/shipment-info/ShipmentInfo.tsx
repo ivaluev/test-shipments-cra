@@ -5,9 +5,7 @@ import Page from '../../layout/Page'
 import styled from '../../utils/styled'
 import {
   ShipmentInfobox,
-  ShipmentInfoboxBlurBackground,
   ShipmentInfoboxInner,
-  ShipmentInfoboxImage,
   ShipmentInfoboxHeading,
   ShipmentName,
   ShipmentRoles,
@@ -18,9 +16,10 @@ import { ShipmentDetails, ShipmentDetailsColumn, ShipmentDetailsRow, ShipmentDet
 import { Loading } from '../../layout/Loading'
 import { getShipmentById } from '../../api/api'
 import { Shipment } from '../../api/types'
+import ErrorMsg from '../../components/ErrorMessage'
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
-export default function MovieInfo() {
+export default function ShipmentInfo() {
   const { id } = useParams()
   const [loading, setLoading] = useState(false)
   const [shipment, setShipment] = useState<Shipment | null>(null)
@@ -112,7 +111,7 @@ export default function MovieInfo() {
               </ShipmentDetails>
             </>
           )}
-          {error && <div>{error}</div>}
+          {error && <ErrorMsg>{error}</ErrorMsg>}
         </Wrapper>
       </Container>
     </Page>

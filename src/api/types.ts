@@ -29,8 +29,11 @@ export type Shipment = {
 
 export class DataPage {
   constructor(shipments: Shipment[], page: number, pageSize = 20) {
-    this.items = shipments.slice(pageSize * (page - 1), pageSize) || []
-    this.pagesTotal = shipments.length || 0
+    const indexStart = pageSize * (page - 1)
+    const indexEnd = Math.min(indexStart + pageSize, shipments.length)
+
+    this.items = shipments.slice(indexStart, indexEnd) || []
+    this.pagesTotal = Math.ceil((shipments.length || 0) / pageSize)
     this.page = page || 1
   }
 

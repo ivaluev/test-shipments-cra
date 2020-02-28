@@ -59,22 +59,22 @@ const CurrentTheme = styled('span')`
   margin-right: 1rem;
 `
 
-const Header: React.SFC<HeaderProps> = ({ title }) => (
+const Header = ({ title }: HeaderProps) => (
   <Wrapper>
     <HeaderInner>
       <HeaderLeft>
         <Title>{title}</Title>
       </HeaderLeft>
       <HeaderNav>
-        <HeaderNavLink to="/movies" activeClassName="is-active">
-          Movies
+        <HeaderNavLink to="/shipments" activeClassName="is-active">
+          Shipments
         </HeaderNavLink>
         <HeaderNavLink to="/about" activeClassName="is-active">
           About
         </HeaderNavLink>
       </HeaderNav>
       <HeaderRight>
-        <CurrentTheme>for Mews Systems</CurrentTheme>
+        <CurrentTheme>for FreightHub</CurrentTheme>
       </HeaderRight>
     </HeaderInner>
   </Wrapper>

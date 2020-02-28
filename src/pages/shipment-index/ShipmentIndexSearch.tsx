@@ -25,7 +25,7 @@ export const ShipmentIndexSearch = ({ search, setSearch, resetSearch }: Shipment
   const onChange = (value: string) => {
     setSearchLocal(value)
     // we are quit until get 3 letters from user
-    if (value && value.length > 2) {
+    if (value && value.length > 1) {
       setSearchStateDebounced(() => setSearch(value))
     }
     if (!value) {
@@ -42,7 +42,7 @@ export const ShipmentIndexSearch = ({ search, setSearch, resetSearch }: Shipment
       <SearchIcon color={searchIsActive ? colorActive : colorInactive} />
       <SearchInput
         type="text"
-        placeholder="Search for a movie, tv show, person...  (not less than 3 characters)"
+        placeholder="Search shipment by id...  (not less than 2 characters)"
         value={searchLocal || ''}
         onChange={e => onChange(e.target.value)}
         onFocus={() => setSearchIsActive(true)}

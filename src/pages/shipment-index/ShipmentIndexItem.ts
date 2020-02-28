@@ -16,8 +16,10 @@ export const ShipmentLoading = styled.tr`
 
 export const ShipmentIndexDetail = styled.td`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  /* flex-direction: center; */
+  /* align-items: center; */
+  flex-direction: column;
+  justify-content: center;
 `
 
 export const ShipmentIcon = styled('img')`
@@ -33,7 +35,7 @@ export const ShipmentIconPh = styled.div`
 export const ShipmentName = styled('div')`
   flex: 1 1 auto;
   height: 100%;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 
   a {
     color: ${props => props.theme.colors.brand};

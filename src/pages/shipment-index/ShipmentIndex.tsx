@@ -5,11 +5,13 @@ import Container from '../../layout/Container'
 import DataTable from '../../components/DataTable'
 import { Loading } from '../../layout/Loading'
 import { getShipmentsById, getShipments } from '../../api/api'
-import { ShipmentLoading, ShipmentIndexDetail, TableWrapper, ShipmentName, ShipmentIconPh } from './ShipmentIndexItem'
+import { ShipmentLoading, ShipmentIndexDetail, TableWrapper, ShipmentName } from './ShipmentIndexItem'
 import ShipmentIndexPager from './ShipmentIndexPager'
 import { useQuery } from '../../utils/hooks'
 import { DataPage, Shipment } from '../../api/types'
 import { ShipmentIndexSearch } from './ShipmentIndexSearch'
+import styled, { Theme } from '../../utils/styled'
+import ErrorMsg from '../../components/ErrorMessage'
 
 export default function MovieIndex() {
   // we assume that change in the query re-render our com
@@ -25,7 +27,7 @@ export default function MovieIndex() {
   const [error, setError] = useState<string>('')
 
   // actions
-  const redirectTo = (s: string, p: number) => history.push(`/shipments?search=${s}&page=${p}`)
+  const redirectTo = (s: string, p: number) => history.push(`/shipments?page=${p}&search=${s}`)
   const setPageAction = (newPage: number) => redirectTo(search, newPage)
   const setSearchAction = (newSearch: string) => redirectTo(newSearch, 1)
   const searchReset = () => history.push('/shipments')
@@ -49,7 +51,7 @@ export default function MovieIndex() {
 
   function renderData() {
     return (
-      <DataTable columns={['Pic', 'Destination', 'Status']} widths={['auto', '', '']}>
+      <DataTable columns={['Id', 'Origin', 'Destination', 'Status']} widths={['', 'auto', '', '']}>
         {loading && results.length === 0 && (
           <ShipmentLoading>
             <td colSpan={3}>Loading...</td>
@@ -57,10 +59,10 @@ export default function MovieIndex() {
         )}
         {results.map(sh => (
           <tr key={sh.id}>
+            <td>{sh.id}</td>
             <ShipmentIndexDetail>
-              <ShipmentIconPh />
               <ShipmentName>
-                <Link to={`/shipments/${sh.id}`}>{sh.name}</Link>
+                <Link to={`/shipments/${sh.id}`}>{sh.origin}</Link>
               </ShipmentName>
             </ShipmentIndexDetail>
             <td>{sh.destination}</td>
@@ -78,7 +80,7 @@ export default function MovieIndex() {
           <Loading loading={loading} />
           <ShipmentIndexSearch search={search} setSearch={setSearchAction} resetSearch={searchReset} />
           {renderData()}
-          {error && <div>{error}</div>}
+          {error && <ErrorMsg>{error} :(</ErrorMsg>}
         </TableWrapper>
         <ShipmentIndexPager page={page} pagesTotal={resultsPages} setPage={setPageAction} />
       </Container>

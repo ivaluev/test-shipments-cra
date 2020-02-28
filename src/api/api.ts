@@ -27,9 +27,9 @@ export async function getShipmentById(id: string): Promise<Shipment> {
   return shipment
 }
 
-export async function getShipmentsById(page: number, id: string): Promise<DataPage> {
-  const shipments: Shipment[] = await callApi('get', id)
-  const items = shipments.filter(sh => sh.id.includes(id))
+export async function getShipmentsById(page: number, search: string): Promise<DataPage> {
+  const shipments: Shipment[] = await callApi('get')
+  const items = shipments.filter(sh => sh.id.includes(search))
   const result = new DataPage(items, page)
   return result
 }
