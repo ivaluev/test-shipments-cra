@@ -1,36 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import Page from '../../layout/Page'
-import Container from '../../layout/Container'
-import DataTable from '../../components/DataTable'
-import { Loading } from '../../layout/Loading'
-import { getShipmentsById, getShipments } from '../../api/api'
-import { ShipmentLoading, ShipmentIndexDetail, TableWrapper, ShipmentName } from './ShipmentIndexItem'
-import ShipmentIndexPager from './ShipmentIndexPager'
-import { useQuery } from '../../utils/hooks'
+import { getShipments, getShipmentsById } from '../../api/api'
 import { DataPage, Shipment } from '../../api/types'
-import { ShipmentIndexSearch } from './ShipmentIndexSearch'
-import styled, { Theme } from '../../utils/styled'
+import DataTable from '../../components/DataTable'
 import ErrorMsg from '../../components/ErrorMessage'
+import Container from '../../layout/Container'
+import { Loading } from '../../layout/Loading'
+import Page from '../../layout/Page'
+import { useQuery } from '../../utils/hooks'
+import { ShipmentLoading, ShipmentName, TableWrapper } from './ShipmentIndexItem'
+import ShipmentIndexPager from './ShipmentIndexPager'
+import { ShipmentIndexSearch } from './ShipmentIndexSearch'
+import ShipmentIndexColumnHead from './ShipmentIndexColumnHead'
 
 export default function MovieIndex() {
+  const [loading, setLoading] = useState(false)
+  const [results, setResults] = useState<Shipment[]>([])
+  const [resultsPages, setResultsPages] = useState(1)
+  const [error, setError] = useState<string>('')
+
   // we assume that change in the query re-render our com
   const history = useHistory()
   const query = useQuery()
   const search = query.get('search') || ''
   const page = parseInt(query.get('page') || '1', 10)
 
-  // state
-  const [loading, setLoading] = useState(false)
-  const [results, setResults] = useState<Shipment[]>([])
-  const [resultsPages, setResultsPages] = useState(1)
-  const [error, setError] = useState<string>('')
-
-  // actions
-  const redirectTo = (s: string, p: number) => history.push(`/shipments?page=${p}&search=${s}`)
-  const setPageAction = (newPage: number) => redirectTo(search, newPage)
-  const setSearchAction = (newSearch: string) => redirectTo(newSearch, 1)
+  // we use router url state management to maintain state in the url
   const searchReset = () => history.push('/shipments')
+  const setUrlTo = (s: string, p: number) => history.push(`/shipments?page=${p}&search=${s}`)
+  const setPage = (newPage: number) => setUrlTo(search, newPage)
+  const setSearch = (newSearch: string) => setUrlTo(newSearch, 1)
+
+  const columns = ['Id', 'Origin', 'Destination', 'Status'].map(c => <ShipmentIndexColumnHead title={c} />)
 
   useEffect(() => {
     const fetch = search ? getShipmentsById : getShipments
@@ -51,10 +52,10 @@ export default function MovieIndex() {
 
   function renderData() {
     return (
-      <DataTable columns={['Id', 'Origin', 'Destination', 'Status']} widths={['', 'auto', '', '']}>
+      <DataTable columns={columns} widths={['', 'auto', '', '']}>
         {loading && results.length === 0 && (
           <ShipmentLoading>
-            <td colSpan={3}>Loading...</td>
+            <td colSpan={4}>Loading...</td>
           </ShipmentLoading>
         )}
         {results.map(sh => (
@@ -78,11 +79,11 @@ export default function MovieIndex() {
       <Container>
         <TableWrapper>
           <Loading loading={loading} />
-          <ShipmentIndexSearch search={search} setSearch={setSearchAction} resetSearch={searchReset} />
+          <ShipmentIndexSearch search={search} setSearch={setSearch} resetSearch={searchReset} />
           {renderData()}
           {error && <ErrorMsg>{error} :(</ErrorMsg>}
         </TableWrapper>
-        <ShipmentIndexPager page={page} pagesTotal={resultsPages} setPage={setPageAction} />
+        <ShipmentIndexPager page={page} pagesTotal={resultsPages} setPage={setPage} />
       </Container>
     </Page>
   )

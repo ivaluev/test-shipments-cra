@@ -16,18 +16,23 @@ export async function callApi(method: string, path?: string, data?: any) {
   return res.json()
 }
 
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms))
+
 export async function getShipments(page: number): Promise<DataPage> {
+  await delay(1000)
   const shipments: Shipment[] = await callApi('get')
   const result = new DataPage(shipments, page)
   return result
 }
 
 export async function getShipmentById(id: string): Promise<Shipment> {
+  await delay(1000)
   const shipment: Shipment = await callApi('get', id)
   return shipment
 }
 
 export async function getShipmentsById(page: number, search: string): Promise<DataPage> {
+  await delay(1000)
   const shipments: Shipment[] = await callApi('get')
   const items = shipments.filter(sh => sh.id.includes(search))
   const result = new DataPage(items, page)

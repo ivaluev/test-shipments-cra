@@ -8,11 +8,6 @@ export type ShipmentService = {
   type: string
 }
 
-// This type is basically shorthand for `{ [key: string]: any }`. Feel free to replace `any` with
-// the expected return type of your API response.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ApiResponse = Record<string, any>
-
 export type Shipment = {
   id: string
   name: string

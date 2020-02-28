@@ -1,20 +1,21 @@
 import styled from '../../utils/styled'
 
-export const TableWrapper = styled.div`
+export const TableWrapper = styled('div')`
   position: relative;
   max-width: ${props => props.theme.widths.md};
   margin: 0 auto;
   min-height: 200px;
 `
 
-export const ShipmentLoading = styled.tr`
+export const ShipmentLoading = styled('tr')`
   td {
     height: 48px;
     text-align: center;
+    font-size: larger;
   }
 `
 
-export const ShipmentIndexDetail = styled.td`
+export const ShipmentIndexDetail = styled('td')`
   display: flex;
   /* flex-direction: center; */
   /* align-items: center; */
@@ -27,7 +28,7 @@ export const ShipmentIcon = styled('img')`
   height: 32px;
 `
 
-export const ShipmentIconPh = styled.div`
+export const ShipmentIconPh = styled('div')`
   width: 32px;
   height: 32px;
 `

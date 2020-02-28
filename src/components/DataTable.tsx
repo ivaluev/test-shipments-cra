@@ -2,7 +2,8 @@ import React from 'react'
 import styled from '../utils/styled'
 
 interface DataTableProps {
-  columns: string[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  columns: React.ReactNode[]
   widths?: string[]
 }
 
@@ -11,7 +12,8 @@ const DataTable: React.FC<DataTableProps> = ({ children, columns, widths }) => (
     <thead>
       <tr>
         {columns.map((column, i) => (
-          <th key={column} style={widths && widths[i] ? { width: widths[i] } : undefined}>
+          // eslint-disable-next-line react/no-array-index-key
+          <th key={i} style={widths && widths[i] ? { width: widths[i] } : undefined}>
             {column}
           </th>
         ))}
