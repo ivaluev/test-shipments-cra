@@ -4,19 +4,12 @@ import Page from '../../layout/Page'
 import Container from '../../layout/Container'
 import DataTable from '../../components/DataTable'
 import { Loading } from '../../layout/Loading'
-import { API_ENDPOINT_IMAGE, API_ENDPOINT, API_KEY, callApi } from '../../api/api'
+import { getShipments } from '../../api/api'
 import { MovieIndexItem, ApiResponseSearch } from './types'
 import { MovieLoading, MovieIndexDetail, MovieIcon, TableWrapper, MovieName, MovieIconPh } from './ShipmentIndexItem'
 import { MovieSearchBox } from './ShipmentIndexSearch'
 import MovieIndexPager from './ShipmentIndexPager'
 import { useQuery } from '../../utils/hooks'
-
-function getSearchUrl(searchTerm: string, page: number) {
-  const seachConcatenated = searchTerm.split(' ').join('+')
-  const seachQuery = `query=${seachConcatenated}` // encode?
-  const searchUrl = `${API_ENDPOINT}/search/movie?${seachQuery}&page=${page}&api_key=${API_KEY}`
-  return searchUrl
-}
 
 export default function MovieIndex() {
   // we assume that change in the query re-render our com

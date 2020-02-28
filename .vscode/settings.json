@@ -1,7 +1,8 @@
 {
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  // "editor.renderWhitespace": "boundary",
+  "editor.renderIndentGuides": false,
+  "editor.renderWhitespace": "boundary",
   "editor.rulers": [120],
   "editor.formatOnSave": true,
   "editor.detectIndentation":true,
