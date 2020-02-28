@@ -30,8 +30,9 @@ export default function MovieIndex() {
   const setUrlTo = (s: string, p: number) => history.push(`/shipments?page=${p}&search=${s}`)
   const setPage = (newPage: number) => setUrlTo(search, newPage)
   const setSearch = (newSearch: string) => setUrlTo(newSearch, 1)
+  const setSorting = (col: string, dir: string) => alert('sdsd')
 
-  const columns = ['Id', 'Origin', 'Destination', 'Status'].map(c => <ShipmentIndexColumnHead title={c} />)
+  const columns = ['Id', 'Origin', 'Destination', 'Status'].map(c => <ShipmentIndexColumnHead title={c} applySoring={setSorting} />)
 
   useEffect(() => {
     const fetch = search ? getShipmentsById : getShipments

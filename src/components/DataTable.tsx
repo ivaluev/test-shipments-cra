@@ -33,7 +33,7 @@ const Wrapper = styled('table')`
   thead {
     tr {
       th {
-        padding: 1rem;
+        padding: 0 1rem;
         text-align: left;
         border-bottom: 2px solid ${props => props.theme.colors.borders};
       }
