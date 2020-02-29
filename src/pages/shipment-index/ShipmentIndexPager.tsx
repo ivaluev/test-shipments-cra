@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from '../../utils/styled'
 
+const _page = 'page'
+
 type ShipmentIndexPagerProps = {
   pagesTotal: number
   setUrl: () => void
   query: URLSearchParams
 }
 
-export default function ShipmentIndexPager({ pagesTotal, setUrl, query }: ShipmentIndexPagerProps) {
-  const _page = 'page'
-
+export default function ShipmentIndexPager({ pagesTotal, query, setUrl }: ShipmentIndexPagerProps) {
   const page = parseInt(query.get(_page) || '1', 10)
   const hasNext = page < pagesTotal
 

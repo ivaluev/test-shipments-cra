@@ -6,6 +6,9 @@ import AwesomeDebouncePromise from 'awesome-debounce-promise'
 import styled from '../../utils/styled'
 import brandColors from '../../styles/colors/brandColors'
 
+const _search = 'search'
+const _page = 'page'
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const setSearchState = (fn: () => void) => fn()
 const setSearchStateDebounced = AwesomeDebouncePromise(setSearchState, 1200)
@@ -17,9 +20,6 @@ type ShipmentIndexSearchProps = {
   query: URLSearchParams
   setUrl: () => void
 }
-
-const _search = 'search'
-const _page = 'page'
 
 export const ShipmentIndexSearch = ({ query, setUrl }: ShipmentIndexSearchProps) => {
   const search = query.get(_search) || ''

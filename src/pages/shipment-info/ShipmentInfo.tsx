@@ -12,7 +12,12 @@ import {
   ShipmentReview
 } from './ShipmentInfoHeader'
 import { ShipmentStats, StatAttribute, Bullet, ShipmentStatsInner } from './ShipmentInfoStats'
-import { ShipmentDetails, ShipmentDetailsColumn, ShipmentDetailsRow, ShipmentDetailsAttrName } from './ShipmentInfoDetails'
+import {
+  ShipmentDetails,
+  ShipmentDetailsColumn,
+  ShipmentDetailsRow,
+  ShipmentDetailsAttrName
+} from './ShipmentInfoDetails'
 import { Loading } from '../../layout/Loading'
 import { getShipmentById } from '../../api/api'
 import { Shipment } from '../../api/types'
@@ -90,7 +95,8 @@ export default function ShipmentInfo() {
                     <ShipmentDetailsAttrName>Mode:</ShipmentDetailsAttrName> {shipment.mode || '-'}
                   </ShipmentDetailsRow>
                   <ShipmentDetailsRow>
-                    <ShipmentDetailsAttrName>Services:</ShipmentDetailsAttrName> {shipment.services?.map(l => l.type).join(', ') || '-'}
+                    <ShipmentDetailsAttrName>Services:</ShipmentDetailsAttrName>{' '}
+                    {shipment.services?.map(l => l.type).join(', ') || '-'}
                   </ShipmentDetailsRow>
                   <ShipmentDetailsRow>
                     <ShipmentDetailsAttrName>Name:</ShipmentDetailsAttrName> {shipment.name || '-'}

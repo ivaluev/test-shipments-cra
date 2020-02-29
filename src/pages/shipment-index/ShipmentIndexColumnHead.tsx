@@ -2,6 +2,11 @@ import React from 'react'
 import { AngleUp, AngleDown } from 'emotion-icons/fa-solid'
 import styled from '../../utils/styled'
 
+const _sortBy = 'sortBy'
+const _sortDir = 'sortDir'
+const _asc = 'asc'
+const _des = 'des'
+
 type Props = {
   title: string
   setUrl: () => void
@@ -11,14 +16,14 @@ type Props = {
 type Dir = 'asc' | 'des'
 
 export default function ShipmentIndexColumnHead({ title, setUrl, query }: Props) {
-  const _sortBy = 'sortBy'
-  const _sortDir = 'sortDir'
-  const _asc = 'asc'
-  const _des = 'des'
-
   function onClick(dir: Dir) {
-    query.set(_sortBy, title)
-    query.set(_sortDir, dir)
+    if (query.get(_sortBy) === title && query.get(_sortDir) === dir) {
+      query.delete(_sortBy)
+      query.delete(_sortDir)
+    } else {
+      query.set(_sortBy, title)
+      query.set(_sortDir, dir)
+    }
     setUrl()
   }
 
