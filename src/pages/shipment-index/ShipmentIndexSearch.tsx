@@ -14,14 +14,31 @@ const colorInactive = desaturate(0.7, brandColors.red)
 const colorActive = brandColors.red
 
 type ShipmentIndexSearchProps = {
-  search: string
-  setSearch: (newSearch: string) => void
-  resetSearch: () => void
+  query: URLSearchParams
+  setUrl: () => void
 }
 
-export const ShipmentIndexSearch = ({ search, setSearch, resetSearch }: ShipmentIndexSearchProps) => {
+const _search = 'search'
+const _page = 'page'
+
+export const ShipmentIndexSearch = ({ query, setUrl }: ShipmentIndexSearchProps) => {
+  const search = query.get(_search) || ''
+
   const [searchLocal, setSearchLocal] = useState(search)
   const [searchIsActive, setSearchIsActive] = useState(false)
+
+  const setSearch = (newSearch: string) => {
+    query.set(_search, newSearch)
+    query.set(_page, '1')
+    setUrl()
+  }
+
+  const resetSearch = () => {
+    query.delete(_search)
+    query.set(_page, '1')
+    setUrl()
+  }
+
   const onChange = (value: string) => {
     setSearchLocal(value)
     // we are quit until get 3 letters from user

@@ -13,6 +13,8 @@ import ShipmentIndexPager from './ShipmentIndexPager'
 import { ShipmentIndexSearch } from './ShipmentIndexSearch'
 import ShipmentIndexColumnHead from './ShipmentIndexColumnHead'
 
+const _search = 'search'
+
 export default function MovieIndex() {
   const [loading, setLoading] = useState(false)
   const [results, setResults] = useState<Shipment[]>([])
@@ -22,24 +24,19 @@ export default function MovieIndex() {
   // we assume that change in the query re-render our com
   const history = useHistory()
   const query = useQuery()
-  const search = query.get('search') || ''
-  const page = parseInt(query.get('page') || '1', 10)
 
-  // we use router url state management to maintain state in the url
-  const searchReset = () => history.push('/shipments')
-  const setUrlTo = (s: string, p: number) => history.push(`/shipments?page=${p}&search=${s}`)
-  const setPage = (newPage: number) => setUrlTo(search, newPage)
-  const setSearch = (newSearch: string) => setUrlTo(newSearch, 1)
-  const setSorting = (col: string, dir: string) => alert('sdsd')
+  const setUrl = () => history.push(`/shipments?${query.toString()}`)
 
-  const columns = ['Id', 'Origin', 'Destination', 'Status'].map(c => <ShipmentIndexColumnHead title={c} applySoring={setSorting} />)
+  const columns = ['Id', 'Origin', 'Destination', 'Status'].map(c => (
+    <ShipmentIndexColumnHead title={c} setUrl={setUrl} query={query} />
+  ))
 
   useEffect(() => {
-    const fetch = search ? getShipmentsById : getShipments
+    const fetch = query.has(_search) ? getShipmentsById : getShipments
     const loadFn = async () => {
       setLoading(true)
       try {
-        const result: DataPage = await fetch(page, search)
+        const result: DataPage = await fetch(query)
         setResults(result.items)
         setResultsPages(result.pagesTotal)
       } catch (err) {
@@ -49,7 +46,7 @@ export default function MovieIndex() {
       }
     }
     loadFn()
-  }, [search, page])
+  }, [query.toString()])
 
   function renderData() {
     return (
@@ -80,11 +77,11 @@ export default function MovieIndex() {
       <Container>
         <TableWrapper>
           <Loading loading={loading} />
-          <ShipmentIndexSearch search={search} setSearch={setSearch} resetSearch={searchReset} />
+          <ShipmentIndexSearch query={query} setUrl={setUrl} />
           {renderData()}
           {error && <ErrorMsg>{error} :(</ErrorMsg>}
         </TableWrapper>
-        <ShipmentIndexPager page={page} pagesTotal={resultsPages} setPage={setPage} />
+        <ShipmentIndexPager pagesTotal={resultsPages} setUrl={setUrl} query={query} />
       </Container>
     </Page>
   )
