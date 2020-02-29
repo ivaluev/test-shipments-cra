@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { getShipments, getShipmentsById } from '../../api/api'
 import { DataPage, Shipment } from '../../api/types'
 import DataTable from '../../components/DataTable'
 import ErrorMsg from '../../components/ErrorMessage'
@@ -12,8 +11,7 @@ import { ShipmentLoading, ShipmentName, TableWrapper } from './ShipmentIndexItem
 import ShipmentIndexPager from './ShipmentIndexPager'
 import { ShipmentIndexSearch } from './ShipmentIndexSearch'
 import ShipmentIndexColumnHead from './ShipmentIndexColumnHead'
-
-const _search = 'search'
+import { getShipments } from '../../api/api'
 
 export default function MovieIndex() {
   const [loading, setLoading] = useState(false)
@@ -32,11 +30,10 @@ export default function MovieIndex() {
   ))
 
   useEffect(() => {
-    const fetch = query.has(_search) ? getShipmentsById : getShipments
     const loadFn = async () => {
       setLoading(true)
       try {
-        const result: DataPage = await fetch(query)
+        const result: DataPage = await getShipments(query)
         setResults(result.items)
         setResultsPages(result.pagesTotal)
       } catch (err) {
