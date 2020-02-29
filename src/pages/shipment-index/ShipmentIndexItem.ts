@@ -2,9 +2,9 @@ import styled from '../../utils/styled'
 
 export const TableWrapper = styled('div')`
   position: relative;
-  max-width: ${props => props.theme.widths.md};
+  /* max-width: ${props => props.theme.widths.md};
   margin: 0 auto;
-  min-height: 200px;
+  min-height: 200px; */
 `
 
 export const ShipmentLoading = styled('tr')`

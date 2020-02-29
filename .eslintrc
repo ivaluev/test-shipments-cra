@@ -27,6 +27,7 @@
     "semi": [1, "never"],
     "quotes": [2, "single", "avoid-escape"],
     "no-underscore-dangle":"off",
+    "no-plusplus":"off",
     "import/prefer-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/no-unescaped-entities": [

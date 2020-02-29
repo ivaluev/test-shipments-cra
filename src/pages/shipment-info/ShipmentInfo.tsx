@@ -22,6 +22,7 @@ import { Loading } from '../../layout/Loading'
 import { getShipmentById } from '../../api/api'
 import { Shipment } from '../../api/types'
 import ErrorMsg from '../../components/ErrorMessage'
+import ShipmentInfoPath, { Step, StepStatusEnum } from './ShipmentInfoPath'
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
 export default function ShipmentInfo() {
@@ -29,6 +30,36 @@ export default function ShipmentInfo() {
   const [loading, setLoading] = useState(false)
   const [shipment, setShipment] = useState<Shipment | null>(null)
   const [error, setError] = useState('')
+
+  const steps: Step[] = [
+    new Step(shipment?.origin || 'Point 1', StepStatusEnum.EXECUTING, StepStatusEnum.EXECUTING),
+    new Step(shipment?.destination || 'Point 2', StepStatusEnum.PENDING)
+  ]
+
+  const oldBox = (sh: Shipment) => (
+    <>
+      <ShipmentInfoboxHeading>
+        <ShipmentName>{sh.name}</ShipmentName>
+        <ShipmentRoles>
+          cargo: <span>{sh.cargo.map(g => g.volume).join(', ')}</span>
+        </ShipmentRoles>
+        <ShipmentReview>{sh.destination}</ShipmentReview>
+      </ShipmentInfoboxHeading>
+      <ShipmentStats>
+        <ShipmentStatsInner>
+          <StatAttribute attr="str" isPrimaryAttr={sh.status === 'str'}>
+            <Bullet attr="str" /> {sh.mode || 0}
+          </StatAttribute>
+          <StatAttribute attr="agi" isPrimaryAttr={sh.status === 'agi'}>
+            <Bullet attr="agi" /> {sh.mode || 0}
+          </StatAttribute>
+          <StatAttribute attr="int" isPrimaryAttr={sh.status === 'int'}>
+            <Bullet attr="int" /> {sh.mode || 0}
+          </StatAttribute>
+        </ShipmentStatsInner>
+      </ShipmentStats>
+    </>
+  )
 
   useEffect(() => {
     if (id) {
@@ -55,29 +86,8 @@ export default function ShipmentInfo() {
           {shipment && (
             <>
               <ShipmentInfobox>
-                {/* <ShipmentInfoboxBlurBackground src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} /> */}
                 <ShipmentInfoboxInner>
-                  {/* <ShipmentInfoboxImage src={`${API_ENDPOINT_IMAGE}/w500${movie.poster_path}`} /> */}
-                  <ShipmentInfoboxHeading>
-                    <ShipmentName>{shipment.name}</ShipmentName>
-                    <ShipmentRoles>
-                      cargo: <span>{shipment.cargo.map(g => g.volume).join(', ')}</span>
-                    </ShipmentRoles>
-                    <ShipmentReview>{shipment.destination}</ShipmentReview>
-                  </ShipmentInfoboxHeading>
-                  <ShipmentStats>
-                    <ShipmentStatsInner>
-                      <StatAttribute attr="str" isPrimaryAttr={shipment.status === 'str'}>
-                        <Bullet attr="str" /> {shipment.mode || 0}
-                      </StatAttribute>
-                      <StatAttribute attr="agi" isPrimaryAttr={shipment.status === 'agi'}>
-                        <Bullet attr="agi" /> {shipment.mode || 0}
-                      </StatAttribute>
-                      <StatAttribute attr="int" isPrimaryAttr={shipment.status === 'int'}>
-                        <Bullet attr="int" /> {shipment.mode || 0}
-                      </StatAttribute>
-                    </ShipmentStatsInner>
-                  </ShipmentStats>
+                  <ShipmentInfoPath data={steps} />
                 </ShipmentInfoboxInner>
               </ShipmentInfobox>
               <ShipmentDetails>

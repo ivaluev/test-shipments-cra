@@ -18,12 +18,10 @@ export default function MovieIndex() {
   const [results, setResults] = useState<Shipment[]>([])
   const [resultsPages, setResultsPages] = useState(1)
   const [error, setError] = useState<string>('')
-
-  // we assume that change in the query re-render our com
   const history = useHistory()
-  const query = useQuery()
 
-  const setUrl = () => history.push(`/shipments?${query.toString()}`)
+  const query = useQuery() // state
+  const setUrl = () => history.push(`/shipments?${query.toString()}`) // dispatch
 
   const columns = ['Id', 'Origin', 'Destination', 'Status'].map(c => (
     <ShipmentIndexColumnHead title={c} setUrl={setUrl} query={query} />

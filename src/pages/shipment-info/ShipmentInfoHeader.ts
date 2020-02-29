@@ -1,9 +1,16 @@
-import { darken } from 'polished'
+import { darken, linearGradient } from 'polished'
 import styled from '../../utils/styled'
 
 export const ShipmentInfobox = styled('div')`
+  /* ${linearGradient({
+    colorStops: ['#00FFFF 0%', 'rgba(0, 0, 255, 0) 50%', '#0000FF 95%'],
+    toDirection: 'to top right',
+    fallback: '#FFF'
+  })} */
   position: relative;
-  background: rgba(0, 0, 0, 0.9);
+  /* background: rgba(0, 0, 0, 0.5); */
+  background: rgb(182,182,182);
+  background: linear-gradient(30deg, rgba(20,20,20,1) 0%, rgba(70,70,70,1) 30%, rgba(182,182,182,1) 100%);
   overflow: hidden;
   border-radius: 8px;
   color: ${props => darken(0.25, props.theme.colors.white)};
