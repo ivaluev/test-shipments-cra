@@ -93,14 +93,19 @@ export default function ShipmentInfo() {
               <ShipmentDetails>
                 <ShipmentDetailsColumn>
                   <ShipmentDetailsRow>
+                    <ShipmentDetailsAttrName>Name:</ShipmentDetailsAttrName> {shipment.name || '-'}
+                  </ShipmentDetailsRow>
+                  <ShipmentDetailsRow>
+                    <ShipmentDetailsAttrName>Origin:</ShipmentDetailsAttrName> {shipment.origin || '-'}
+                  </ShipmentDetailsRow>
+                  <ShipmentDetailsRow>
                     <ShipmentDetailsAttrName>Destination:</ShipmentDetailsAttrName> {shipment.destination || '-'}
                   </ShipmentDetailsRow>
                   <ShipmentDetailsRow>
                     <ShipmentDetailsAttrName>Total:</ShipmentDetailsAttrName> {shipment.total || '-'}
                   </ShipmentDetailsRow>
-                  <ShipmentDetailsRow>
-                    <ShipmentDetailsAttrName>Id:</ShipmentDetailsAttrName> {shipment.id || '-'}
-                  </ShipmentDetailsRow>
+                </ShipmentDetailsColumn>
+                <ShipmentDetailsColumn>
                   <ShipmentDetailsRow>
                     <ShipmentDetailsAttrName>Mode:</ShipmentDetailsAttrName> {shipment.mode || '-'}
                   </ShipmentDetailsRow>
@@ -109,16 +114,8 @@ export default function ShipmentInfo() {
                     {shipment.services?.map(l => l.type).join(', ') || '-'}
                   </ShipmentDetailsRow>
                   <ShipmentDetailsRow>
-                    <ShipmentDetailsAttrName>Name:</ShipmentDetailsAttrName> {shipment.name || '-'}
-                  </ShipmentDetailsRow>
-                  <ShipmentDetailsRow>
-                    <ShipmentDetailsAttrName>Origin:</ShipmentDetailsAttrName> {shipment.origin || '-'}
-                  </ShipmentDetailsRow>
-                  <ShipmentDetailsRow>
                     <ShipmentDetailsAttrName>Type:</ShipmentDetailsAttrName> {shipment.type || '-'}
                   </ShipmentDetailsRow>
-                </ShipmentDetailsColumn>
-                <ShipmentDetailsColumn>
                   <ShipmentDetailsRow>
                     <ShipmentDetailsAttrName>UserId:</ShipmentDetailsAttrName>
                     {shipment.userId}

@@ -130,7 +130,7 @@ const SvgText = styled('text')`
   font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 12px;
   padding-bottom: 1em;
-  fill: gainsboro;
+  fill: darkgray;
 `
 
 const SvgLine2 = styled('line')`
@@ -141,17 +141,6 @@ const SvgLine2 = styled('line')`
   @keyframes dash {
     to {
       stroke-dashoffset: 0;
-    }
-  }
-`
-
-const SvgLine = styled('line')`
-  stroke-width: 2;
-  stroke-dasharray: 100;
-  animation: dash 5s linear;
-  @keyframes dash {
-    to {
-      stroke-dashoffset: 1000;
     }
   }
 `

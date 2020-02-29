@@ -9,8 +9,8 @@ export const ShipmentInfobox = styled('div')`
   })} */
   position: relative;
   /* background: rgba(0, 0, 0, 0.5); */
-  background: rgb(182,182,182);
-  background: linear-gradient(30deg, rgba(20,20,20,1) 0%, rgba(70,70,70,1) 30%, rgba(182,182,182,1) 100%);
+  /* background: rgb(182,182,182);
+  background: linear-gradient(30deg, rgba(20,20,20,1) 0%, rgba(70,70,70,1) 30%, rgba(182,182,182,1) 100%); */
   overflow: hidden;
   border-radius: 8px;
   color: ${props => darken(0.25, props.theme.colors.white)};
@@ -34,7 +34,7 @@ export const ShipmentInfoboxInner = styled('div')`
   align-items: center;
   position: relative;
   padding: 3rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 125px inset;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 125px inset; */
   z-index: 2;
 
   @media (min-width: ${props => props.theme.breakpoints.lg}) {
