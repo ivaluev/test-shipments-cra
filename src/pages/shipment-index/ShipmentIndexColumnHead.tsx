@@ -1,5 +1,6 @@
 import React from 'react'
 import { AngleUp, AngleDown } from 'emotion-icons/fa-solid'
+import { lighten } from 'polished'
 import styled from '../../utils/styled'
 
 const _sortBy = 'sortBy'
@@ -64,10 +65,10 @@ const HeaderRight = styled('div')`
   width: 12px;
   color: lightgray;
   & > svg:hover {
-    color: grey;
+    color: ${p => p.theme.colors.brand};
     cursor: pointer;
   }
   & > .is-active {
-    color: grey;
+    color: ${p => lighten(0.1, p.theme.colors.brand)};
   }
 `

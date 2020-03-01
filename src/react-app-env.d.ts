@@ -1,6 +1,5 @@
 /// <reference types="react-scripts" />
 
-declare module 'disable-scroll'
 declare module 'emotion-icons/fa-solid'
 declare module 'emotion-icons/ion-md'
 

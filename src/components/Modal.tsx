@@ -56,22 +56,16 @@ const ModalBase = ({ children, isOpen = false, close }: PropsCh & Props) => {
   )
 }
 
-const useModal = (preventScroll = false) => {
+const useModal = () => {
   const [isOpen, setOpen] = useState(false)
 
   const open = useCallback(() => {
     setOpen(true)
-    if (preventScroll) {
-      disableScroll.on()
-    }
-  }, [setOpen, preventScroll])
+  }, [setOpen])
 
   const close = useCallback(() => {
     setOpen(false)
-    if (preventScroll) {
-      disableScroll.off()
-    }
-  }, [setOpen, preventScroll])
+  }, [setOpen])
 
   const Modal = ({ children }: PropsCh) => (
     <ModalBase isOpen={isOpen} close={close}>
