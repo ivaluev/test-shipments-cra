@@ -8,7 +8,7 @@ type Props = {
   setValue: (value: string) => void
 }
 
-export default function BrandInput({ value, placeholder, errorText = "rr", setValue }: Props) {
+export default function BrandInput({ value, placeholder, errorText, setValue }: Props) {
   const errorStyle: CSSProperties = { borderBottomColor: '#ce1313', visibility: errorText ? 'visible' : 'hidden' }
 
   return (
