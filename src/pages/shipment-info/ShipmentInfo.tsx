@@ -23,6 +23,7 @@ import { getShipmentById } from '../../api/api'
 import { Shipment } from '../../api/types'
 import ErrorMsg from '../../components/ErrorMessage'
 import ShipmentInfoPath, { Step, StepStatusEnum } from './ShipmentInfoPath'
+import ShipmentNameModal from './ShipmentNameModal'
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
 export default function ShipmentInfo() {
@@ -93,7 +94,8 @@ export default function ShipmentInfo() {
               <ShipmentDetails>
                 <ShipmentDetailsColumn>
                   <ShipmentDetailsRow>
-                    <ShipmentDetailsAttrName>Name:</ShipmentDetailsAttrName> {shipment.name || '-'}
+                    <ShipmentDetailsAttrName>Name:</ShipmentDetailsAttrName>{' '}
+                    <ShipmentNameModal name={shipment.name}>{shipment.name || '-'}</ShipmentNameModal>
                   </ShipmentDetailsRow>
                   <ShipmentDetailsRow>
                     <ShipmentDetailsAttrName>Origin:</ShipmentDetailsAttrName> {shipment.origin || '-'}
