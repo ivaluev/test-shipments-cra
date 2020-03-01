@@ -49,10 +49,10 @@ const ModalHeading = styled('h1')`
 
 const ModalInputWrapper = styled('p')`
   margin-bottom: 40px;
+  color: #655959;
 `
 
 const ModalShell = styled('div')`
   background-color: #fff;
   padding: 50px 100px;
-  /* border-radius: 10px; */
 `
