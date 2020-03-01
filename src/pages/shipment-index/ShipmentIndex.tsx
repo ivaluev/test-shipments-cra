@@ -23,7 +23,7 @@ export default function MovieIndex() {
   const query = useQuery() // state
   const setUrl = () => history.push(`/shipments?${query.toString()}`) // dispatch
 
-  const columns = ['Id', 'Origin', 'Destination', 'Status'].map(c => (
+  const columns = ['Id', 'Name', 'Origin', 'Destination', 'Status'].map(c => (
     <ShipmentIndexColumnHead title={c} setUrl={setUrl} query={query} />
   ))
 
@@ -45,10 +45,10 @@ export default function MovieIndex() {
 
   function renderData() {
     return (
-      <DataTable columns={columns} widths={['', 'auto', '', '']}>
+      <DataTable columns={columns} widths={['', 'auto', '', '', '']}>
         {loading && results.length === 0 && (
           <ShipmentLoading>
-            <td colSpan={4}>Loading...</td>
+            <td colSpan={5}>Loading...</td>
           </ShipmentLoading>
         )}
         {results.map(sh => (
@@ -56,9 +56,10 @@ export default function MovieIndex() {
             <td>{sh.id}</td>
             <td>
               <ShipmentName>
-                <Link to={`/shipments/${sh.id}`}>{sh.origin}</Link>
+                <Link to={`/shipments/${sh.id}`}>{sh.name}</Link>
               </ShipmentName>
             </td>
+            <td>{sh.origin}</td>
             <td>{sh.destination}</td>
             <td>{sh.status || 0}</td>
           </tr>

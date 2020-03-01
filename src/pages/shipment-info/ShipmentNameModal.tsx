@@ -2,6 +2,7 @@ import React from 'react'
 import useModal from '../../components/Modal'
 import styled from '../../utils/styled'
 import { ButtonPrimary, Button } from '../../components/Buttons'
+import { BrandLink } from '../../components/BrandLink'
 
 type Props = {
   children: React.ReactNode
@@ -18,7 +19,7 @@ export default function ShipmentNameModal({ children, name }: Props) {
 
   return (
     <>
-      <ShipmentNameLink onClick={open}>{children}</ShipmentNameLink>
+      <BrandLink onClick={open}>{children}</BrandLink>
       <Modal>
         <ModalShell>
           <ModalHeading>Edit Name</ModalHeading>
@@ -36,11 +37,6 @@ export default function ShipmentNameModal({ children, name }: Props) {
     </>
   )
 }
-
-export const ShipmentNameLink = styled('a')`
-  color: ${props => props.theme.colors.brand};
-  cursor: pointer;
-`
 
 const ModalHeading = styled('h1')`
   margin-top: 0;

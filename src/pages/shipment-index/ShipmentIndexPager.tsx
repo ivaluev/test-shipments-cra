@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '../../utils/styled'
+import { BrandLink } from '../../components/BrandLink'
 
 const _page = 'page'
 
@@ -28,11 +29,11 @@ export default function ShipmentIndexPager({ pagesTotal, query, setUrl }: Shipme
   if (pagesTotal > 1) {
     return (
       <PaginationWrapper>
-        {page > 1 && <PageNumber onClick={handlePagePrev}>← Previous</PageNumber>}
+        {page > 1 && <BrandLink onClick={handlePagePrev}>← Previous</BrandLink>}
         <PageInfo>
           {page} / {pagesTotal}
         </PageInfo>
-        {hasNext && <PageNumber onClick={handlePageNext}>Next →</PageNumber>}
+        {hasNext && <BrandLink onClick={handlePageNext}>Next →</BrandLink>}
       </PaginationWrapper>
     )
   }
@@ -46,9 +47,4 @@ const PaginationWrapper = styled.div`
 const PageInfo = styled.span`
   display: inline-block;
   margin: 0 2em;
-`
-
-const PageNumber = styled.a`
-  display: inline-block;
-  cursor: pointer;
 `
