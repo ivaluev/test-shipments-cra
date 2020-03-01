@@ -1,7 +1,7 @@
 import React from 'react'
 import useModal from '../../components/Modal'
 import styled from '../../utils/styled'
-import { ButtonPrimary, Button } from '../../components/Buttons'
+import { ButtonPrimary, Button } from '../../components/BrandButtons'
 import { BrandLink } from '../../components/BrandLink'
 
 type Props = {
