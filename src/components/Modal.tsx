@@ -1,5 +1,4 @@
-import disableScroll from 'disable-scroll'
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { createPortal } from 'react-dom'
 import styled from '../utils/styled'
 
@@ -59,13 +58,9 @@ const ModalBase = ({ children, isOpen = false, close }: PropsCh & Props) => {
 const useModal = () => {
   const [isOpen, setOpen] = useState(false)
 
-  const open = useCallback(() => {
-    setOpen(true)
-  }, [setOpen])
+  const open = () => setOpen(true)
 
-  const close = useCallback(() => {
-    setOpen(false)
-  }, [setOpen])
+  const close = () => setOpen(false)
 
   const Modal = ({ children }: PropsCh) => (
     <ModalBase isOpen={isOpen} close={close}>

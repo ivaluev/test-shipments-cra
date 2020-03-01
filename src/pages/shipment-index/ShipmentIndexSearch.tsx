@@ -59,7 +59,7 @@ export const ShipmentIndexSearch = ({ query, setUrl }: ShipmentIndexSearchProps)
       <SearchIcon color={searchIsActive ? colorActive : colorInactive} />
       <SearchInput
         type="text"
-        placeholder="Search shipment by id...  (not less than 2 characters)"
+        placeholder="Search any text...  (not less than 2 characters)"
         value={searchLocal || ''}
         onChange={e => onChange(e.target.value)}
         onFocus={() => setSearchIsActive(true)}

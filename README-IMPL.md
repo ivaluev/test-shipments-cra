@@ -1,3 +1,5 @@
+for convinience - json server is started automatically on port 4000 (app runs on port 3000)?
+
 there are multitude of possible project file structures as well as state managenet solutions
 
 for this example I used a simple modifieble url state - although I can easyly rewrite (use) into immutable redux one - the result will still be the same

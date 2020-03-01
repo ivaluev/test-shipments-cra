@@ -28,6 +28,7 @@ export default function BrandInput({ value, placeholder, errorText, setValue }: 
 }
 
 const BrandInputBase = styled('input')`
+  /* color: #655959; */
   border-bottom-color: rgba(0, 0, 0, 0.2);
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -37,6 +38,7 @@ const BrandInputBase = styled('input')`
   border-right: 0px;
   width: 100%;
   font-size: 18px;
+  line-height: 1.25;
 
   &:focus {
     outline: none;

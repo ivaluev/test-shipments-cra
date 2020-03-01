@@ -9,7 +9,8 @@ export async function callApi(method: string, path?: string, data?: any) {
   const res = await fetch(url, {
     method,
     headers: {
-      Accept: 'application/json'
+      Accept: 'application/json',
+      'content-type': 'application/json'
     },
     body: JSON.stringify(data)
   })
@@ -34,5 +35,11 @@ export async function getShipments(query: URLSearchParams): Promise<DataPage> {
   }
 
   const result = new DataPage(shipments, query)
+  return result
+}
+
+export async function updateShipmentName(shId: string, name: string): Promise<Shipment> {
+  await delay(800)
+  const result: Shipment = await callApi('PATCH', shId, { name })
   return result
 }

@@ -3,15 +3,7 @@ import { useParams } from 'react-router-dom'
 import Container from '../../layout/Container'
 import Page from '../../layout/Page'
 import styled from '../../utils/styled'
-import {
-  ShipmentInfobox,
-  ShipmentInfoboxInner,
-  ShipmentInfoboxHeading,
-  ShipmentName,
-  ShipmentRoles,
-  ShipmentReview
-} from './ShipmentInfoHeader'
-import { ShipmentStats, StatAttribute, Bullet, ShipmentStatsInner } from './ShipmentInfoStats'
+import { ShipmentInfobox, ShipmentInfoboxInner } from './ShipmentInfoHeader'
 import {
   ShipmentDetails,
   ShipmentDetailsColumn,
@@ -37,45 +29,21 @@ export default function ShipmentInfo() {
     new Step(shipment?.destination || 'Point 2', StepStatusEnum.PENDING)
   ]
 
-  const oldBox = (sh: Shipment) => (
-    <>
-      <ShipmentInfoboxHeading>
-        <ShipmentName>{sh.name}</ShipmentName>
-        <ShipmentRoles>
-          cargo: <span>{sh.cargo.map(g => g.volume).join(', ')}</span>
-        </ShipmentRoles>
-        <ShipmentReview>{sh.destination}</ShipmentReview>
-      </ShipmentInfoboxHeading>
-      <ShipmentStats>
-        <ShipmentStatsInner>
-          <StatAttribute attr="str" isPrimaryAttr={sh.status === 'str'}>
-            <Bullet attr="str" /> {sh.mode || 0}
-          </StatAttribute>
-          <StatAttribute attr="agi" isPrimaryAttr={sh.status === 'agi'}>
-            <Bullet attr="agi" /> {sh.mode || 0}
-          </StatAttribute>
-          <StatAttribute attr="int" isPrimaryAttr={sh.status === 'int'}>
-            <Bullet attr="int" /> {sh.mode || 0}
-          </StatAttribute>
-        </ShipmentStatsInner>
-      </ShipmentStats>
-    </>
-  )
+  const fetchRequest = async (sid: string) => {
+    setLoading(true)
+    try {
+      const res: Shipment = await getShipmentById(sid)
+      setShipment(res)
+    } catch (err) {
+      setError(err.toString())
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
     if (id) {
-      const fetchRequest = async () => {
-        setLoading(true)
-        try {
-          const res: Shipment = await getShipmentById(id)
-          setShipment(res)
-        } catch (err) {
-          setError(err.toString())
-        } finally {
-          setLoading(false)
-        }
-      }
-      fetchRequest()
+      fetchRequest(id)
     }
   }, [id])
 
@@ -95,7 +63,9 @@ export default function ShipmentInfo() {
                 <ShipmentDetailsColumn>
                   <ShipmentDetailsRow>
                     <ShipmentDetailsAttrName>Name:</ShipmentDetailsAttrName>{' '}
-                    <ShipmentNameModal name={shipment.name}>{shipment.name || '-'}</ShipmentNameModal>
+                    <ShipmentNameModal shipment={shipment} setShipment={setShipment}>
+                      {shipment.name || '-'}
+                    </ShipmentNameModal>
                   </ShipmentDetailsRow>
                   <ShipmentDetailsRow>
                     <ShipmentDetailsAttrName>Origin:</ShipmentDetailsAttrName> {shipment.origin || '-'}
