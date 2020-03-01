@@ -36,6 +36,7 @@ const NameForm = ({ shipment, setShipment, close }: NameFormProps) => {
 
   useEffect(() => {
     if (!value) setErrorText('You have to enter some text')
+    else setErrorText('')
   }, [value])
 
   return (
@@ -94,7 +95,7 @@ const FormHeading = styled('h1')`
 
 const FormContent = styled('div')`
   min-width: 400px;
-  margin-bottom: 50px;
+  margin-bottom: 15px;
 `
 
 const FormActions = styled('div')`

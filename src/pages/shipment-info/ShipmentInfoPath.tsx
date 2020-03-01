@@ -48,7 +48,7 @@ type Props = {
 }
 
 const colorGreen = '#CCCA6A' // '#5fc358'
-const colorGrey = '#909090' // '#595959'
+const colorGrey = '#bebebe' // '#909090' // '#595959'
 const circleRadius = 23
 const circleStrokeWidth = 7
 

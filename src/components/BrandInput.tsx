@@ -8,9 +8,8 @@ type Props = {
   setValue: (value: string) => void
 }
 
-export default function BrandInput({ value, placeholder, errorText, setValue }: Props) {
-  const fieldError = errorText ? <BrandInputError>{errorText}</BrandInputError> : null
-  const errorStyle: CSSProperties = { borderBottomColor: '#ce1313' }
+export default function BrandInput({ value, placeholder, errorText = "rr", setValue }: Props) {
+  const errorStyle: CSSProperties = { borderBottomColor: '#ce1313', visibility: errorText ? 'visible' : 'hidden' }
 
   return (
     <div>
@@ -22,7 +21,7 @@ export default function BrandInput({ value, placeholder, errorText, setValue }: 
         onChange={e => setValue(e.target.value)}
         // onChange={(e: React.FormEvent<HTMLInputElement>) => setValue(e.currentTarget.value)}
       />
-      {fieldError}
+      <BrandInputError>{errorText}</BrandInputError>
     </div>
   )
 }
@@ -52,4 +51,5 @@ const BrandInputError = styled('div')`
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 14px;
+  height: 36px;
 `
