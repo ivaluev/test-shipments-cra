@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../layout/Page'
 import Container from '../layout/Container'
-import styled from '../utils/styled'
+import styled from '../services/styled'
 
 const About = () => {
   return (

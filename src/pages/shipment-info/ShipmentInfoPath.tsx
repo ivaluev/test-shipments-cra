@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from '../../utils/styled'
-import trunc from '../../utils/ext'
+import styled from '../../services/styled'
+import trunc from '../../services/ext'
 
 export enum StepStatusEnum {
   PENDING = 0,

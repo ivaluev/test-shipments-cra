@@ -3,9 +3,9 @@ import { ThemeProvider } from 'emotion-theming'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { Global } from '@emotion/core'
 
-import lightTheme from './styles/themes/light'
-import normalize from './styles/normalize'
-import globals from './styles/globals'
+import lightTheme from './theme/themes/light'
+import normalize from './theme/normalize'
+import globals from './theme/globals'
 
 import Root from './layout/Root'
 import Header from './layout/Header'

@@ -1,4 +1,4 @@
-import styled from '../utils/styled'
+import styled from '../services/styled'
 
 const Page = styled.div`
   display: flex;

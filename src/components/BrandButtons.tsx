@@ -1,4 +1,4 @@
-import styled from '../utils/styled'
+import styled from '../services/styled'
 
 export const Button = styled('button')`
   display: inline-block;

@@ -1,7 +1,7 @@
 import React from 'react'
 import { AngleUp, AngleDown } from 'emotion-icons/fa-solid'
 import { lighten } from 'polished'
-import styled from '../../utils/styled'
+import styled from '../../services/styled'
 import { SORT_BY, SORT_ORDER_ASC, SORT_ORDER_DESC, SORT_ORDER } from '../../api/types'
 
 type Props = {

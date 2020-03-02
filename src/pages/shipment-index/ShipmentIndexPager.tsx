@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '../../utils/styled'
+import styled from '../../services/styled'
 import { BrandLink } from '../../components/BrandLink'
 
 const _page = 'page'

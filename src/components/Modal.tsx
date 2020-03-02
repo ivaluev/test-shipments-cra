@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { createPortal } from 'react-dom'
-import styled from '../utils/styled'
+import styled from '../services/styled'
 
 const ModalContainer = styled('div')`
   position: fixed;

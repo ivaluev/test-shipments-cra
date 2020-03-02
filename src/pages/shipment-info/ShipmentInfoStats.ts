@@ -1,4 +1,4 @@
-import styled from '../../utils/styled'
+import styled from '../../services/styled'
 
 export const ShipmentStats = styled('div')`
   display: block;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { shade } from 'polished'
 import useModal from '../../components/Modal'
-import styled from '../../utils/styled'
+import styled from '../../services/styled'
 import { ButtonPrimary, Button } from '../../components/BrandButtons'
 import { BrandLink } from '../../components/BrandLink'
 import BrandInput from '../../components/BrandInput'

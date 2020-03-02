@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { keyframes } from '@emotion/core'
 import { transparentize } from 'polished'
-import styled from '../utils/styled'
+import styled from '../services/styled'
 
 export const LoadingSpinner: React.SFC = () => (
   <Spinner>

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '../utils/styled'
+import styled from '../services/styled'
 
 interface DataTableProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

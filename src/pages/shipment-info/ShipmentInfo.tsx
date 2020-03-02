@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Container from '../../layout/Container'
 import Page from '../../layout/Page'
-import styled from '../../utils/styled'
+import styled from '../../services/styled'
 import { ShipmentInfobox, ShipmentInfoboxInner } from './ShipmentInfoHeader'
 import {
   ShipmentDetails,

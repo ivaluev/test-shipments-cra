@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react'
-import styled from '../utils/styled'
+import styled from '../services/styled'
 
 type Props = {
   placeholder: string
