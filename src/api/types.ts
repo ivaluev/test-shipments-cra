@@ -2,6 +2,7 @@ export const SORT_BY = 'sort'
 export const SORT_ORDER = 'order'
 export const SORT_ORDER_DESC = 'desc'
 export const SORT_ORDER_ASC = 'asc'
+export const _PAGE = 'page'
 
 export type ShipmentCargo = {
   type: string
@@ -32,8 +33,8 @@ export class DataPage {
   constructor(shipments: Shipment[], query: URLSearchParams, pageSize = 20) {
     let sortedShipments = shipments
 
-    if (query.has('sortBy')) {
-      const sortBy = query.get('sortBy') || ''
+    if (query.has(SORT_BY)) {
+      const sortBy = query.get(SORT_BY) || ''
       const sortByKey = sortBy.toLowerCase()
       sortedShipments = sortedShipments.sort((a, b) => {
         if (a[sortByKey] > b[sortByKey]) {
@@ -44,12 +45,12 @@ export class DataPage {
         }
         return 0
       })
-      if (query.get('sortDir') === 'des') {
+      if (query.get(SORT_ORDER) === SORT_ORDER_DESC) {
         sortedShipments.reverse()
       }
     }
 
-    const page = parseInt(query.get('page') || '1', 10)
+    const page = parseInt(query.get(_PAGE) || '1', 10)
 
     const indexStart = pageSize * (page - 1)
     const indexEnd = Math.min(indexStart + pageSize, sortedShipments.length)

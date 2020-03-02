@@ -2,11 +2,7 @@ import React from 'react'
 import { AngleUp, AngleDown } from 'emotion-icons/fa-solid'
 import { lighten } from 'polished'
 import styled from '../../utils/styled'
-
-const _sortBy = 'sortBy'
-const _sortDir = 'sortDir'
-const _asc = 'asc'
-const _des = 'des'
+import { SORT_BY, SORT_ORDER_ASC, SORT_ORDER_DESC, SORT_ORDER } from '../../api/types'
 
 type Props = {
   title: string
@@ -14,23 +10,23 @@ type Props = {
   query: URLSearchParams
 }
 
-type Dir = 'asc' | 'des'
+type Dir = typeof SORT_ORDER_ASC | typeof SORT_ORDER_DESC
 
 export default function ShipmentIndexColumnHead({ title, setUrl, query }: Props) {
   function onClick(dir: Dir) {
-    if (query.get(_sortBy) === title && query.get(_sortDir) === dir) {
-      query.delete(_sortBy)
-      query.delete(_sortDir)
+    if (query.get(SORT_BY) === title && query.get(SORT_BY) === dir) {
+      query.delete(SORT_BY)
+      query.delete(SORT_ORDER)
     } else {
-      query.set(_sortBy, title)
-      query.set(_sortDir, dir)
+      query.set(SORT_BY, title)
+      query.set(SORT_ORDER, dir)
     }
     setUrl()
   }
 
   function isActive(dir: Dir): string {
-    if (dir === query.get('sortDir')) {
-      if (title === query.get('sortBy')) return 'is-active'
+    if (dir === query.get(SORT_ORDER)) {
+      if (title === query.get(SORT_BY)) return 'is-active'
     }
     return ''
   }
@@ -39,8 +35,8 @@ export default function ShipmentIndexColumnHead({ title, setUrl, query }: Props)
     <HeaderWrapper>
       <HeaderLeft>{title}</HeaderLeft>
       <HeaderRight>
-        <AngleUp onClick={() => onClick(_asc)} className={isActive(_asc)} />
-        <AngleDown onClick={() => onClick(_des)} className={isActive(_des)} />
+        <AngleUp onClick={() => onClick(SORT_ORDER_ASC)} className={isActive(SORT_ORDER_ASC)} />
+        <AngleDown onClick={() => onClick(SORT_ORDER_DESC)} className={isActive(SORT_ORDER_DESC)} />
       </HeaderRight>
     </HeaderWrapper>
   )
