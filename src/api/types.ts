@@ -1,3 +1,8 @@
+export const SORT_BY = 'sort'
+export const SORT_ORDER = 'order'
+export const SORT_ORDER_DESC = 'desc'
+export const SORT_ORDER_ASC = 'asc'
+
 export type ShipmentCargo = {
   type: string
   description: string

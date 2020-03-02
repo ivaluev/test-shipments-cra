@@ -43,8 +43,10 @@ export default function MovieIndex() {
     loadFn()
   }, [query.toString()])
 
-  function renderData() {
-    return (
+  const table = (
+    <TableWrapper>
+      <Loading loading={loading} />
+      <ShipmentIndexSearch query={query} setUrl={setUrl} />
       <DataTable columns={columns} widths={['', 'auto', '', '', '']}>
         {loading && results.length === 0 && (
           <ShipmentLoading>
@@ -65,20 +67,13 @@ export default function MovieIndex() {
           </tr>
         ))}
       </DataTable>
-    )
-  }
+      <ShipmentIndexPager pagesTotal={resultsPages} setUrl={setUrl} query={query} />
+    </TableWrapper>
+  )
 
   return (
     <Page>
-      <Container>
-        <TableWrapper>
-          <Loading loading={loading} />
-          <ShipmentIndexSearch query={query} setUrl={setUrl} />
-          {renderData()}
-          {error && <ErrorMsg>{error} :(</ErrorMsg>}
-        </TableWrapper>
-        <ShipmentIndexPager pagesTotal={resultsPages} setUrl={setUrl} query={query} />
-      </Container>
+      <Container>{error ? <ErrorMsg>{error} :(</ErrorMsg> : table}</Container>
     </Page>
   )
 }
