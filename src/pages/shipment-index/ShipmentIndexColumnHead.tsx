@@ -1,5 +1,6 @@
 import React from 'react'
-import { AngleUp, AngleDown } from 'emotion-icons/fa-solid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { lighten } from 'polished'
 import styled from '../../services/styled'
 import { SORT_BY, SORT_ORDER_ASC, SORT_ORDER_DESC, SORT_ORDER } from '../../api/types'
@@ -35,12 +36,21 @@ export default function ShipmentIndexColumnHead({ title, setUrl, query }: Props)
     <HeaderWrapper>
       <HeaderLeft>{title}</HeaderLeft>
       <HeaderRight>
-        <AngleUp onClick={() => onClick(SORT_ORDER_ASC)} className={isActive(SORT_ORDER_ASC)} />
-        <AngleDown onClick={() => onClick(SORT_ORDER_DESC)} className={isActive(SORT_ORDER_DESC)} />
+        <AngleIcon icon={faAngleUp} onClick={() => onClick(SORT_ORDER_ASC)} className={isActive(SORT_ORDER_ASC)} />
+        <AngleIcon icon={faAngleDown} onClick={() => onClick(SORT_ORDER_DESC)} className={isActive(SORT_ORDER_DESC)} />
       </HeaderRight>
     </HeaderWrapper>
   )
 }
+
+const AngleIcon = styled(FontAwesomeIcon)`
+  width: 19px !important;
+  height: 19px;
+  &:hover {
+    color: ${p => p.theme.colors.brand};
+    cursor: pointer;
+  }
+`
 
 const HeaderWrapper = styled('div')`
   display: flex;
@@ -60,10 +70,6 @@ const HeaderRight = styled('div')`
   justify-content: center;
   width: 12px;
   color: lightgray;
-  & > svg:hover {
-    color: ${p => p.theme.colors.brand};
-    cursor: pointer;
-  }
   & > .is-active {
     color: ${p => lighten(0.1, p.theme.colors.brand)};
   }

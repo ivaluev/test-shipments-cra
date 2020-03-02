@@ -16,7 +16,11 @@ const About = () => {
           </p>
           <p>
             This project is intended as a test task for position of a Frontend Developer at{' '}
-            <a href="https://github.com/freight-hub/freighthub-frontend-challenge" target="blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/freight-hub/freighthub-frontend-challenge"
+              target="blank"
+              rel="noopener noreferrer"
+            >
               FreightHub
             </a>
             .

@@ -5,6 +5,9 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 
 import 'typeface-ibm-plex-sans'
+import { addIconsToLibrary } from './services/icons'
+
+// addIconsToLibrary()
 
 ReactDOM.render(<App />, document.getElementById('root'))
 

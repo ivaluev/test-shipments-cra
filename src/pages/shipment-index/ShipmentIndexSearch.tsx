@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Search } from 'emotion-icons/fa-solid'
-import { Close } from 'emotion-icons/ion-md'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { desaturate } from 'polished'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
 import styled from '../../services/styled'
@@ -56,7 +56,7 @@ export const ShipmentIndexSearch = ({ query, setUrl }: ShipmentIndexSearchProps)
 
   return (
     <SearchContainer style={{ backgroundColor: searchIsActive ? '#e5e5e3' : '' }}>
-      <SearchIcon color={searchIsActive ? colorActive : colorInactive} />
+      <SearchIcon icon={faSearch} color={searchIsActive ? colorActive : colorInactive} />
       <SearchInput
         type="text"
         placeholder="Search any text...  (not less than 2 characters)"
@@ -65,7 +65,13 @@ export const ShipmentIndexSearch = ({ query, setUrl }: ShipmentIndexSearchProps)
         onFocus={() => setSearchIsActive(true)}
         onBlur={() => setSearchIsActive(false)}
       />
-      <IconClose onClick={clearSearch} style={{ visibility: searchLocal && searchLocal.length ? '' : 'hidden' }} />
+      {searchLocal && searchLocal.length && (
+        <IconClose
+          icon={faTimes}
+          onClick={clearSearch}
+          // style={{ visibility: searchLocal && searchLocal.length ? 'visible' : 'hidden' }}
+        />
+      )}
     </SearchContainer>
   )
 }
@@ -74,22 +80,26 @@ const SearchContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
+  align-items: center;
   /* background-color: whitesmoke; */
 `
 
-const SearchIcon = styled(Search)`
-  width: 65px;
+const SearchIcon = styled(FontAwesomeIcon)`
+  width: 25px !important;
   height: 25px;
+  margin-right: 10px;
+  margin-left: 20px;
 `
 
-const IconClose = styled(Close)`
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  color: grey;
+const IconClose = styled(FontAwesomeIcon)`
+  width: 25px !important;
+  height: 25px;
+  margin-right: 18px;
+  margin-left: 18px;
+  color: #a89898ad;
   cursor: pointer;
   &:hover {
-    color: black;
+    color: #eb5558;
   }
 `
 
