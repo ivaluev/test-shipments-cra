@@ -14,7 +14,7 @@ type Dir = typeof SORT_ORDER_ASC | typeof SORT_ORDER_DESC
 
 export default function ShipmentIndexColumnHead({ title, setUrl, query }: Props) {
   function onClick(dir: Dir) {
-    if (query.get(SORT_BY) === title && query.get(SORT_BY) === dir) {
+    if (query.get(SORT_BY) === title && query.get(SORT_ORDER) === dir) {
       query.delete(SORT_BY)
       query.delete(SORT_ORDER)
     } else {
