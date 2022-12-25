@@ -33,6 +33,7 @@ const BrandInputBase = styled('input')`
   /* color: #655959; */
   border-bottom-color: rgba(0, 0, 0, 0.2);
   border-bottom-width: 1px;
+  margin-bottom: 1px;
   border-bottom-style: solid;
   padding: 5px;
   border-top: 0px;
@@ -46,6 +47,7 @@ const BrandInputBase = styled('input')`
     outline: none;
     border-bottom-color: #00afcc;
     border-bottom-width: 2px;
+    margin-bottom: 0;
   }
 `
 
