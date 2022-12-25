@@ -39,7 +39,6 @@ type Props = {
   elementId?: string
 }
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const modalRoot: Element = document.getElementById('modal-root')!
 
 const ModalBase = ({children, isOpen = false, close}: PropsCh & Props) => {

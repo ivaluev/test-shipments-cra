@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import {darken, linearGradient} from 'polished'
-import styled from '../../services/styled'
 
 export const ShipmentInfobox = styled('div')`
   /* ${linearGradient({

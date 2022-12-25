@@ -1,5 +1,5 @@
-import trunc from '../../services/ext'
-import styled from '../../services/styled'
+import styled from '@emotion/styled'
+import trunc from "../../services/ext"
 
 export enum StepStatusEnum {
   PENDING = 0,

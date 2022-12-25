@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import {shade} from 'polished'
 import React, {useEffect, useState} from 'react'
 import {updateShipmentName} from '../../api/api'
@@ -5,9 +6,8 @@ import {Shipment} from '../../api/types'
 import {Button, ButtonPrimary} from '../../components/BrandButtons'
 import BrandInput from '../../components/BrandInput'
 import {BrandLink} from '../../components/BrandLink'
-import BrandLoader from '../../components/BrandLoader'
-import useModal from '../../components/Modal'
-import styled from '../../services/styled'
+import BrandLoader from "../../components/BrandLoader"
+import useModal from "../../components/Modal"
 
 type NameFormProps = {
   shipment: Shipment
@@ -25,7 +25,7 @@ const NameForm = ({shipment, setShipment, close}: NameFormProps) => {
     try {
       const shipmentUpdated = await updateShipmentName(shipment.id, value)
       setShipment(shipmentUpdated)
-    } catch (err) {
+    } catch (err: any) {
       // eslint-disable-next-line no-alert
       alert(err.toString())
     } finally {

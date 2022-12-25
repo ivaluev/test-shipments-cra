@@ -1,4 +1,4 @@
-import styled from '../../services/styled'
+import styled from '@emotion/styled'
 
 export const TableWrapper = styled('div')`
   position: relative;

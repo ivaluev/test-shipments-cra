@@ -1,15 +1,15 @@
+import styled from '@emotion/styled'
 import {faSearch, faTimes} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
-import {desaturate} from 'polished'
-import {useState} from 'react'
-import styled from '../../services/styled'
+import {desaturate} from "polished"
+import {useState} from "react"
+
 import brandColors from '../../theme/colors/brandColors'
 
 const _search = 'search'
 const _page = 'page'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const setSearchState = (fn: () => void) => fn()
 const setSearchStateDebounced = AwesomeDebouncePromise(setSearchState, 1200)
 

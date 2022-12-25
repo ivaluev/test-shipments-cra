@@ -1,12 +1,13 @@
+import styled from '@emotion/styled'
 import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import {getShipmentById} from '../../api/api'
 import {Shipment} from '../../api/types'
 import ErrorMsg from '../../components/ErrorMessage'
 import Container from '../../layout/Container'
-import {Loading} from '../../layout/Loading'
-import Page from '../../layout/Page'
-import styled from '../../services/styled'
+import {Loading} from "../../layout/Loading"
+import Page from "../../layout/Page"
+
 import {
   ShipmentDetails,
   ShipmentDetailsAttrName,
@@ -34,7 +35,7 @@ export default function ShipmentInfo() {
     try {
       const res: Shipment = await getShipmentById(sid)
       setShipment(res)
-    } catch (err) {
+    } catch (err: any) {
       setError(err.toString())
     } finally {
       setLoading(false)

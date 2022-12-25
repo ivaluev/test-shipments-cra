@@ -2,7 +2,6 @@ import {DataPage, Shipment} from './types'
 
 export const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:3000'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function callApi(method: string, path?: string, data?: any) {
   const url = path ? `${API_ENDPOINT}${path}` : API_ENDPOINT
 

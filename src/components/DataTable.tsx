@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 
 interface DataTableProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns: React.ReactNode[]
   widths?: string[]
   children?: React.ReactNode
@@ -12,7 +11,6 @@ const DataTable: React.FC<DataTableProps> = ({children, columns, widths}) => (
     <thead>
       <tr>
         {columns.map((column, i) => (
-          // eslint-disable-next-line react/no-array-index-key
           <th key={i} style={widths && widths[i] ? {width: widths[i]} : undefined}>
             {column}
           </th>

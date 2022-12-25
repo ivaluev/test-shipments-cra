@@ -1,5 +1,5 @@
-import {BrandLink} from '../../components/BrandLink'
-import styled from '../../services/styled'
+import styled from '@emotion/styled'
+import {BrandLink} from "../../components/BrandLink"
 
 const _page = 'page'
 

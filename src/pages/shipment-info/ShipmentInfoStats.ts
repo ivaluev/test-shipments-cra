@@ -1,4 +1,4 @@
-import styled from '../../services/styled'
+import styled from '@emotion/styled'
 
 export const ShipmentStats = styled('div')`
   display: block;
