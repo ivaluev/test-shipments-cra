@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import {ReactNode} from 'react'
-import {Outlet} from "react-router"
 import {Pages} from '../pages'
 import {Header} from './Header'
 

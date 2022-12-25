@@ -6,8 +6,8 @@ import {Shipment} from '../../api/types'
 import {Button, ButtonPrimary} from '../../components/BrandButtons'
 import BrandInput from '../../components/BrandInput'
 import {BrandLink} from '../../components/BrandLink'
-import BrandLoader from "../../components/BrandLoader"
-import useModal from "../../components/Modal"
+import BrandLoader from '../../components/BrandLoader'
+import useModal from '../../components/Modal'
 
 type NameFormProps = {
   shipment: Shipment

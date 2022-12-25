@@ -5,8 +5,8 @@ import {getShipmentById} from '../../api/api'
 import {Shipment} from '../../api/types'
 import ErrorMsg from '../../components/ErrorMessage'
 import Container from '../../layout/Container'
-import {Loading} from "../../layout/Loading"
-import Page from "../../layout/Page"
+import {Loading} from '../../layout/Loading'
+import Page from '../../layout/Page'
 
 import {
   ShipmentDetails,

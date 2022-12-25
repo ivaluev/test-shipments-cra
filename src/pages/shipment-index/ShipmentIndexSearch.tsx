@@ -2,8 +2,8 @@ import styled from '@emotion/styled'
 import {faSearch, faTimes} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
-import {desaturate} from "polished"
-import {useState} from "react"
+import {desaturate} from 'polished'
+import {useState} from 'react'
 
 import brandColors from '../../theme/colors/brandColors'
 
