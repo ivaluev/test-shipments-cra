@@ -1,14 +1,19 @@
 import styled from '@emotion/styled'
-import React, {ReactNode} from 'react'
+import {ReactNode} from 'react'
+import {Outlet} from "react-router"
+import {Pages} from '../pages'
+import {Header} from './Header'
 
 interface RootProps {
-  className?: string
   children?: ReactNode
 }
 
-const Root: React.FC<RootProps> = ({children}) => <Wrapper>{children}</Wrapper>
-
-export default Root
+export const Root = () => (
+  <Wrapper>
+    <Header title="Shipments Client Portal" />
+    <Pages />
+  </Wrapper>
+)
 
 const Wrapper = styled('div')`
   display: flex;

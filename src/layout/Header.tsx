@@ -1,11 +1,34 @@
 import styled from '@emotion/styled'
 import {NavLink} from 'react-router-dom'
-
 import Container from './Container'
 
 interface HeaderProps {
   title: string
 }
+
+export const Header = ({title}: HeaderProps) => (
+  <Wrapper>
+    <HeaderInner>
+      <HeaderLeft>
+        <Title>{title}</Title>
+      </HeaderLeft>
+      <HeaderNav>
+        <HeaderNavLink
+          to="/shipments"
+          className={({isActive}) => (isActive ? 'is-active' : undefined)}
+        >
+          Shipments
+        </HeaderNavLink>
+        <HeaderNavLink to="/about" className={({isActive}) => (isActive ? 'is-active' : undefined)}>
+          About
+        </HeaderNavLink>
+      </HeaderNav>
+      <HeaderRight>
+        <CurrentTheme>for FreightHub</CurrentTheme>
+      </HeaderRight>
+    </HeaderInner>
+  </Wrapper>
+)
 
 const Wrapper = styled.header`
   padding: 0.5rem 1.5rem;
@@ -58,29 +81,3 @@ const Title = styled('h2')`
 const CurrentTheme = styled('span')`
   margin-right: 1rem;
 `
-
-const Header = ({title}: HeaderProps) => (
-  <Wrapper>
-    <HeaderInner>
-      <HeaderLeft>
-        <Title>{title}</Title>
-      </HeaderLeft>
-      <HeaderNav>
-        <HeaderNavLink
-          to="/shipments"
-          className={({isActive}) => (isActive ? 'is-active' : undefined)}
-        >
-          Shipments
-        </HeaderNavLink>
-        <HeaderNavLink to="/about" className={({isActive}) => (isActive ? 'is-active' : undefined)}>
-          About
-        </HeaderNavLink>
-      </HeaderNav>
-      <HeaderRight>
-        <CurrentTheme>for FreightHub</CurrentTheme>
-      </HeaderRight>
-    </HeaderInner>
-  </Wrapper>
-)
-
-export default Header

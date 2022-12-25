@@ -8,8 +8,8 @@ export const Pages = () => {
     <Routes>
       <Route path="/" element={<Navigate to="/shipments" />} />
       <Route path="/shipments/*">
-        <Route path="/:id" element={<ShipmentInfo />} />
-        <Route path="/" element={<ShipmentIndex />} />
+        <Route path="" element={<ShipmentIndex />} />
+        <Route path=":id" element={<ShipmentInfo />} />
       </Route>
       <Route path="/about" element={<About />} />
       <Route element={<div>Not Found</div>} />
