@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import { shade } from 'polished'
+import {shade} from 'polished'
+import React, {useEffect, useState} from 'react'
+import {updateShipmentName} from '../../api/api'
+import {Shipment} from '../../api/types'
+import {Button, ButtonPrimary} from '../../components/BrandButtons'
+import BrandInput from '../../components/BrandInput'
+import {BrandLink} from '../../components/BrandLink'
+import BrandLoader from '../../components/BrandLoader'
 import useModal from '../../components/Modal'
 import styled from '../../services/styled'
-import { ButtonPrimary, Button } from '../../components/BrandButtons'
-import { BrandLink } from '../../components/BrandLink'
-import BrandInput from '../../components/BrandInput'
-import { Shipment } from '../../api/types'
-import { updateShipmentName } from '../../api/api'
-import BrandLoader from '../../components/BrandLoader'
 
 type NameFormProps = {
   shipment: Shipment
@@ -15,7 +15,7 @@ type NameFormProps = {
   close: () => void
 }
 
-const NameForm = ({ shipment, setShipment, close }: NameFormProps) => {
+const NameForm = ({shipment, setShipment, close}: NameFormProps) => {
   const [errorText, setErrorText] = useState<string>()
   const [value, setValue] = useState(shipment.name)
   const [loading, setLoading] = useState(false)
@@ -46,7 +46,12 @@ const NameForm = ({ shipment, setShipment, close }: NameFormProps) => {
         <>
           <FormHeading>Edit Name</FormHeading>
           <FormContent>
-            <BrandInput value={value} setValue={setValue} placeholder="Enter name" errorText={errorText} />
+            <BrandInput
+              value={value}
+              setValue={setValue}
+              placeholder="Enter name"
+              errorText={errorText}
+            />
           </FormContent>
           <FormActions>
             <ButtonPrimary type="button" onClick={save} disabled={!!errorText}>
@@ -68,8 +73,8 @@ type ModalProps = {
   setShipment: (sh: Shipment) => void
 }
 
-export default function ShipmentNameModal({ children, shipment, setShipment }: ModalProps) {
-  const { Modal, open, close } = useModal()
+export default function ShipmentNameModal({children, shipment, setShipment}: ModalProps) {
+  const {Modal, open, close} = useModal()
 
   return (
     <>

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { desaturate } from 'polished'
+import {faSearch, faTimes} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
+import {desaturate} from 'polished'
+import {useState} from 'react'
 import styled from '../../services/styled'
 import brandColors from '../../theme/colors/brandColors'
 
@@ -21,7 +21,7 @@ type ShipmentIndexSearchProps = {
   setUrl: () => void
 }
 
-export const ShipmentIndexSearch = ({ query, setUrl }: ShipmentIndexSearchProps) => {
+export const ShipmentIndexSearch = ({query, setUrl}: ShipmentIndexSearchProps) => {
   const search = query.get(_search) || ''
 
   const [searchLocal, setSearchLocal] = useState(search)
@@ -55,7 +55,7 @@ export const ShipmentIndexSearch = ({ query, setUrl }: ShipmentIndexSearchProps)
   }
 
   return (
-    <SearchContainer style={{ backgroundColor: searchIsActive ? '#e5e5e3' : '' }}>
+    <SearchContainer style={{backgroundColor: searchIsActive ? '#e5e5e3' : ''}}>
       <SearchIcon icon={faSearch} color={searchIsActive ? colorActive : colorInactive} />
       <SearchInput
         type="text"

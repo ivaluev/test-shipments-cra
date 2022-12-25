@@ -1,11 +1,11 @@
-import { darken, linearGradient } from 'polished'
+import {darken, linearGradient} from 'polished'
 import styled from '../../services/styled'
 
 export const ShipmentInfobox = styled('div')`
   /* ${linearGradient({
     colorStops: ['#00FFFF 0%', 'rgba(0, 0, 255, 0) 50%', '#0000FF 95%'],
     toDirection: 'to top right',
-    fallback: '#FFF'
+    fallback: '#FFF',
   })} */
   position: relative;
   /* background: rgba(0, 0, 0, 0.5); */

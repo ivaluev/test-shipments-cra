@@ -1,9 +1,8 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { lighten } from 'polished'
+import {faAngleDown, faAngleUp} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {lighten} from 'polished'
+import {SORT_BY, SORT_ORDER, SORT_ORDER_ASC, SORT_ORDER_DESC} from '../../api/types'
 import styled from '../../services/styled'
-import { SORT_BY, SORT_ORDER_ASC, SORT_ORDER_DESC, SORT_ORDER } from '../../api/types'
 
 type Props = {
   title: string
@@ -13,7 +12,7 @@ type Props = {
 
 type Dir = typeof SORT_ORDER_ASC | typeof SORT_ORDER_DESC
 
-export default function ShipmentIndexColumnHead({ title, setUrl, query }: Props) {
+export default function ShipmentIndexColumnHead({title, setUrl, query}: Props) {
   function onClick(dir: Dir) {
     if (query.get(SORT_BY) === title && query.get(SORT_ORDER) === dir) {
       query.delete(SORT_BY)
@@ -36,8 +35,16 @@ export default function ShipmentIndexColumnHead({ title, setUrl, query }: Props)
     <HeaderWrapper>
       <HeaderLeft>{title}</HeaderLeft>
       <HeaderRight>
-        <AngleIcon icon={faAngleUp} onClick={() => onClick(SORT_ORDER_ASC)} className={isActive(SORT_ORDER_ASC)} />
-        <AngleIcon icon={faAngleDown} onClick={() => onClick(SORT_ORDER_DESC)} className={isActive(SORT_ORDER_DESC)} />
+        <AngleIcon
+          icon={faAngleUp}
+          onClick={() => onClick(SORT_ORDER_ASC)}
+          className={isActive(SORT_ORDER_ASC)}
+        />
+        <AngleIcon
+          icon={faAngleDown}
+          onClick={() => onClick(SORT_ORDER_DESC)}
+          className={isActive(SORT_ORDER_DESC)}
+        />
       </HeaderRight>
     </HeaderWrapper>
   )

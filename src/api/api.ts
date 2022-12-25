@@ -1,4 +1,4 @@
-import { Shipment, DataPage } from './types'
+import {DataPage, Shipment} from './types'
 
 export const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:3000'
 
@@ -13,16 +13,16 @@ export async function callApi(method: string, path?: string, data?: any) {
       method,
       headers: {
         Accept: 'application/json',
-        'content-type': 'application/json'
+        'content-type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     }
   } else {
     options = {
       method,
       headers: {
-        Accept: 'application/json'
-      }
+        Accept: 'application/json',
+      },
     }
   }
 
@@ -41,13 +41,16 @@ export async function getShipmentById(id: string): Promise<Shipment> {
 export async function getShipments(query: URLSearchParams): Promise<DataPage> {
   await delay(800)
   const search = query.get('search')
-  const shipments: Shipment[] = await callApi('get', search ? `/shipments?q=${search.trim()}` : '/shipments')
+  const shipments: Shipment[] = await callApi(
+    'get',
+    search ? `/shipments?q=${search.trim()}` : '/shipments'
+  )
   const result = new DataPage(shipments, query)
   return result
 }
 
 export async function updateShipmentName(shId: string, name: string): Promise<Shipment> {
   await delay(800)
-  const result: Shipment = await callApi('PATCH', `/shipments/${shId}`, { name })
+  const result: Shipment = await callApi('PATCH', `/shipments/${shId}`, {name})
   return result
 }

@@ -1,6 +1,6 @@
+import {keyframes} from '@emotion/core'
+import {transparentize} from 'polished'
 import * as React from 'react'
-import { keyframes } from '@emotion/core'
-import { transparentize } from 'polished'
 import styled from '../services/styled'
 
 export const LoadingSpinner: React.SFC = () => (
@@ -76,7 +76,7 @@ type LoadingProps = {
   loading: boolean
 }
 
-export const Loading = ({ loading }: LoadingProps) => {
+export const Loading = ({loading}: LoadingProps) => {
   if (!loading) return null
 
   return (

@@ -1,11 +1,12 @@
-import React from 'react'
-import styled from '../services/styled'
+import styled from '@emotion/styled'
+import React, {ReactNode} from 'react'
 
 interface RootProps {
   className?: string
+  children?: ReactNode
 }
 
-const Root: React.FC<RootProps> = ({ children }) => <Wrapper>{children}</Wrapper>
+const Root: React.FC<RootProps> = ({children}) => <Wrapper>{children}</Wrapper>
 
 export default Root
 

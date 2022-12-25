@@ -7,13 +7,13 @@ interface DataTableProps {
   widths?: string[]
 }
 
-const DataTable: React.FC<DataTableProps> = ({ children, columns, widths }) => (
+const DataTable: React.FC<DataTableProps> = ({children, columns, widths}) => (
   <Wrapper>
     <thead>
       <tr>
         {columns.map((column, i) => (
           // eslint-disable-next-line react/no-array-index-key
-          <th key={i} style={widths && widths[i] ? { width: widths[i] } : undefined}>
+          <th key={i} style={widths && widths[i] ? {width: widths[i]} : undefined}>
             {column}
           </th>
         ))}

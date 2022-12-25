@@ -1,4 +1,4 @@
-import { transparentize } from 'polished'
+import {transparentize} from 'polished'
 import styled from '../../services/styled'
 
 export const ShipmentDetailsAttrName = styled('span')`

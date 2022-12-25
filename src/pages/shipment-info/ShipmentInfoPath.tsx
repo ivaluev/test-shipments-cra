@@ -1,11 +1,10 @@
-import React from 'react'
-import styled from '../../services/styled'
 import trunc from '../../services/ext'
+import styled from '../../services/styled'
 
 export enum StepStatusEnum {
   PENDING = 0,
   EXECUTING = 1,
-  DONE = 2
+  DONE = 2,
 }
 
 /**
@@ -52,7 +51,7 @@ const colorGrey = '#bebebe' // '#909090' // '#595959'
 const circleRadius = 23
 const circleStrokeWidth = 7
 
-export default function ShipmentInfoPath({ data = [], step = 470, centerLine = 60 }: Props) {
+export default function ShipmentInfoPath({data = [], step = 470, centerLine = 60}: Props) {
   const getLen = (text: string) => {
     return (text && Math.min(30, text.length) * 6) || 10
   }
@@ -72,10 +71,20 @@ export default function ShipmentInfoPath({ data = [], step = 470, centerLine = 6
       >
         <defs>
           <g id="cigreen">
-            <circle stroke="white" strokeWidth={circleStrokeWidth} fill={colorGreen} r={circleRadius} />
+            <circle
+              stroke="white"
+              strokeWidth={circleStrokeWidth}
+              fill={colorGreen}
+              r={circleRadius}
+            />
           </g>
           <g id="cigrey">
-            <circle stroke="white" strokeWidth={circleStrokeWidth} fill={colorGrey} r={circleRadius} />
+            <circle
+              stroke="white"
+              strokeWidth={circleStrokeWidth}
+              fill={colorGrey}
+              r={circleRadius}
+            />
           </g>
         </defs>
 
@@ -90,7 +99,12 @@ export default function ShipmentInfoPath({ data = [], step = 470, centerLine = 6
                   x2={step * (counter + 1) + firstOffset}
                   stroke={i.lineStatus > StepStatusEnum.PENDING ? colorGreen : colorGrey}
                 />
-                <foreignObject y={carYOffset} x={step * counter + firstOffset} width="210" height="40">
+                <foreignObject
+                  y={carYOffset}
+                  x={step * counter + firstOffset}
+                  width="210"
+                  height="40"
+                >
                   <CarOuter>
                     <CarInner>
                       <CarText>{i.lineCar}</CarText>

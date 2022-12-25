@@ -1,7 +1,6 @@
-import React from 'react'
-import Page from '../layout/Page'
+import styled from "@emotion/styled"
 import Container from '../layout/Container'
-import styled from '../services/styled'
+import Page from '../layout/Page'
 
 const About = () => {
   return (
@@ -10,9 +9,9 @@ const About = () => {
         <PageContent>
           <h1>Welcome!</h1>
           <p>
-            Welcome to the Redux 4.0.7 + TypeScript 3.8.2 example! This example site shows you the ideal project
-            structure, recommended libraries, as well as design pattern on writing type-safe React (+ Redux) app with
-            TypeScript.
+            Welcome to the Redux 4.0.7 + TypeScript 3.8.2 example! This example site shows you the
+            ideal project structure, recommended libraries, as well as design pattern on writing
+            type-safe React (+ Redux) app with TypeScript.
           </p>
           <p>
             This project is intended as a test task for position of a Frontend Developer at{' '}
@@ -26,8 +25,8 @@ const About = () => {
             .
           </p>
           <p>
-            To demonstrate it, I created a website which pulls data from the json-server and display information about
-            shipments.
+            To demonstrate it, I created a website which pulls data from the json-server and display
+            information about shipments.
           </p>
           <p>Enjoy your stay!</p>
         </PageContent>

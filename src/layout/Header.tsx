@@ -1,5 +1,4 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import styled from '../services/styled'
 import Container from './Container'
 
@@ -59,7 +58,7 @@ const CurrentTheme = styled('span')`
   margin-right: 1rem;
 `
 
-const Header = ({ title }: HeaderProps) => (
+const Header = ({title}: HeaderProps) => (
   <Wrapper>
     <HeaderInner>
       <HeaderLeft>

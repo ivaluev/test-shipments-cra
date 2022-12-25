@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { createPortal } from 'react-dom'
+import React, {useState} from 'react'
+import {createPortal} from 'react-dom'
 import styled from '../services/styled'
 
 const ModalContainer = styled('div')`
@@ -42,7 +42,7 @@ type Props = {
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const modalRoot: Element = document.getElementById('modal-root')!
 
-const ModalBase = ({ children, isOpen = false, close }: PropsCh & Props) => {
+const ModalBase = ({children, isOpen = false, close}: PropsCh & Props) => {
   if (isOpen === false) {
     return null
   }
@@ -62,13 +62,13 @@ const useModal = () => {
 
   const close = () => setOpen(false)
 
-  const Modal = ({ children }: PropsCh) => (
+  const Modal = ({children}: PropsCh) => (
     <ModalBase isOpen={isOpen} close={close}>
       {children}
     </ModalBase>
   )
 
-  return { Modal, open, close, isOpen }
+  return {Modal, open, close, isOpen}
 }
 
 export default useModal

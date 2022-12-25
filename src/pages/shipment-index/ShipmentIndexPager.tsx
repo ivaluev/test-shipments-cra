@@ -1,6 +1,5 @@
-import React from 'react'
+import {BrandLink} from '../../components/BrandLink'
 import styled from '../../services/styled'
-import { BrandLink } from '../../components/BrandLink'
 
 const _page = 'page'
 
@@ -10,7 +9,7 @@ type ShipmentIndexPagerProps = {
   query: URLSearchParams
 }
 
-export default function ShipmentIndexPager({ pagesTotal, query, setUrl }: ShipmentIndexPagerProps) {
+export default function ShipmentIndexPager({pagesTotal, query, setUrl}: ShipmentIndexPagerProps) {
   const page = parseInt(query.get(_page) || '1', 10)
   const hasNext = page < pagesTotal
 

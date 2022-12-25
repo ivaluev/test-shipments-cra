@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import {useEffect, useState} from 'react'
+import {useParams} from 'react-router-dom'
+import {getShipmentById} from '../../api/api'
+import {Shipment} from '../../api/types'
+import ErrorMsg from '../../components/ErrorMessage'
 import Container from '../../layout/Container'
+import {Loading} from '../../layout/Loading'
 import Page from '../../layout/Page'
 import styled from '../../services/styled'
-import { ShipmentInfobox, ShipmentInfoboxInner } from './ShipmentInfoHeader'
 import {
   ShipmentDetails,
+  ShipmentDetailsAttrName,
   ShipmentDetailsColumn,
   ShipmentDetailsRow,
-  ShipmentDetailsAttrName
 } from './ShipmentInfoDetails'
-import { Loading } from '../../layout/Loading'
-import { getShipmentById } from '../../api/api'
-import { Shipment } from '../../api/types'
-import ErrorMsg from '../../components/ErrorMessage'
-import ShipmentInfoPath, { Step, StepStatusEnum } from './ShipmentInfoPath'
+import {ShipmentInfobox, ShipmentInfoboxInner} from './ShipmentInfoHeader'
+import ShipmentInfoPath, {Step, StepStatusEnum} from './ShipmentInfoPath'
 import ShipmentNameModal from './ShipmentNameModal'
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
 export default function ShipmentInfo() {
-  const { id } = useParams()
+  const {id} = useParams()
   const [loading, setLoading] = useState(false)
   const [shipment, setShipment] = useState<Shipment | null>(null)
   const [error, setError] = useState('')
 
   const steps: Step[] = [
     new Step(shipment?.origin || 'Point 1', StepStatusEnum.EXECUTING, StepStatusEnum.EXECUTING),
-    new Step(shipment?.destination || 'Point 2', StepStatusEnum.PENDING)
+    new Step(shipment?.destination || 'Point 2', StepStatusEnum.PENDING),
   ]
 
   const fetchRequest = async (sid: string) => {
@@ -68,13 +68,16 @@ export default function ShipmentInfo() {
                     </ShipmentNameModal>
                   </ShipmentDetailsRow>
                   <ShipmentDetailsRow>
-                    <ShipmentDetailsAttrName>Origin:</ShipmentDetailsAttrName> {shipment.origin || '-'}
+                    <ShipmentDetailsAttrName>Origin:</ShipmentDetailsAttrName>{' '}
+                    {shipment.origin || '-'}
                   </ShipmentDetailsRow>
                   <ShipmentDetailsRow>
-                    <ShipmentDetailsAttrName>Destination:</ShipmentDetailsAttrName> {shipment.destination || '-'}
+                    <ShipmentDetailsAttrName>Destination:</ShipmentDetailsAttrName>{' '}
+                    {shipment.destination || '-'}
                   </ShipmentDetailsRow>
                   <ShipmentDetailsRow>
-                    <ShipmentDetailsAttrName>Total:</ShipmentDetailsAttrName> {shipment.total || '-'}
+                    <ShipmentDetailsAttrName>Total:</ShipmentDetailsAttrName>{' '}
+                    {shipment.total || '-'}
                   </ShipmentDetailsRow>
                 </ShipmentDetailsColumn>
                 <ShipmentDetailsColumn>

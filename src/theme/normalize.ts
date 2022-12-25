@@ -1,4 +1,4 @@
-import { css } from '@emotion/core'
+import {css} from '@emotion/core'
 
 const normalize = css`
   /*! modern-normalize | MIT License | https://github.com/sindresorhus/modern-normalize */

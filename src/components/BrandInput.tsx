@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import {CSSProperties} from 'react'
 import styled from '../services/styled'
 
 type Props = {
@@ -8,8 +8,11 @@ type Props = {
   setValue: (value: string) => void
 }
 
-export default function BrandInput({ value, placeholder, errorText, setValue }: Props) {
-  const errorStyle: CSSProperties = { borderBottomColor: '#ce1313', visibility: errorText ? 'visible' : 'hidden' }
+export default function BrandInput({value, placeholder, errorText, setValue}: Props) {
+  const errorStyle: CSSProperties = {
+    borderBottomColor: '#ce1313',
+    visibility: errorText ? 'visible' : 'hidden',
+  }
 
   return (
     <div>
