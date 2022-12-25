@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import {CSSProperties} from 'react'
-import styled from '../services/styled'
 
 type Props = {
   placeholder: string

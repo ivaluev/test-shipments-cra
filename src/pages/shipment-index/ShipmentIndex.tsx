@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {getShipments} from '../../api/api'
 import {DataPage, Shipment} from '../../api/types'
 import DataTable from '../../components/DataTable'
@@ -18,10 +18,10 @@ export default function MovieIndex() {
   const [results, setResults] = useState<Shipment[]>([])
   const [resultsPages, setResultsPages] = useState(1)
   const [error, setError] = useState<string>('')
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const query = useQuery() // state
-  const setUrl = () => history.push(`/shipments?${query.toString()}`) // dispatch
+  const setUrl = () => navigate(`/shipments?${query.toString()}`) // dispatch
 
   const columns = ['Id', 'Name', 'Origin', 'Destination', 'Status'].map(c => (
     <ShipmentIndexColumnHead title={c} setUrl={setUrl} query={query} />
@@ -34,7 +34,7 @@ export default function MovieIndex() {
         const result: DataPage = await getShipments(query)
         setResults(result.items)
         setResultsPages(result.pagesTotal)
-      } catch (err) {
+      } catch (err: any) {
         setError(err.toString())
       } finally {
         setLoading(false)

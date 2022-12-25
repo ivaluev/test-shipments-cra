@@ -1,4 +1,4 @@
-import styled from '../services/styled'
+import styled from '@emotion/styled'
 
 const ErrorMsg = styled('div')`
   text-align: center;

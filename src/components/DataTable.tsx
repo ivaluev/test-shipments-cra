@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from '../services/styled'
+import styled from '@emotion/styled'
 
 interface DataTableProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns: React.ReactNode[]
   widths?: string[]
+  children?: React.ReactNode
 }
 
 const DataTable: React.FC<DataTableProps> = ({children, columns, widths}) => (

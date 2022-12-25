@@ -1,4 +1,4 @@
-import styled from '../services/styled'
+import styled from '@emotion/styled'
 
 const Page = styled.div`
   display: flex;

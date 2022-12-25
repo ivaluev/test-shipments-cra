@@ -1,9 +1,8 @@
-import {keyframes} from '@emotion/core'
+import {keyframes} from '@emotion/react'
+import styled from '@emotion/styled'
 import {transparentize} from 'polished'
-import * as React from 'react'
-import styled from '../services/styled'
 
-export const LoadingSpinner: React.SFC = () => (
+export const LoadingSpinner: React.FC = () => (
   <Spinner>
     <div className="cube1" />
     <div className="cube2" />

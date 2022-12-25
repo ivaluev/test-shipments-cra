@@ -1,5 +1,6 @@
+import styled from '@emotion/styled'
 import {NavLink} from 'react-router-dom'
-import styled from '../services/styled'
+
 import Container from './Container'
 
 interface HeaderProps {
@@ -65,10 +66,13 @@ const Header = ({title}: HeaderProps) => (
         <Title>{title}</Title>
       </HeaderLeft>
       <HeaderNav>
-        <HeaderNavLink to="/shipments" activeClassName="is-active">
+        <HeaderNavLink
+          to="/shipments"
+          className={({isActive}) => (isActive ? 'is-active' : undefined)}
+        >
           Shipments
         </HeaderNavLink>
-        <HeaderNavLink to="/about" activeClassName="is-active">
+        <HeaderNavLink to="/about" className={({isActive}) => (isActive ? 'is-active' : undefined)}>
           About
         </HeaderNavLink>
       </HeaderNav>
